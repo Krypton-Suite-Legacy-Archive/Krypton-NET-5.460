@@ -10,3 +10,4 @@
 * Added generic C# `.gitignore` file
 * Retarget to .NET 4.6 framework
 * Version correction
+* Nuget package released! Build 547 (build date February 9th, 2018) obtainable from [here](https://www.nuget.org/packages/KryptonToolkitSuite46/)

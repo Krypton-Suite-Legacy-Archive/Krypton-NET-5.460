@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -26,7 +26,7 @@ namespace ComponentFactory.Krypton.Toolkit
     [DefaultEvent("CheckedChanged")]
 	[DefaultProperty("Text")]
     [DefaultBindingProperty("Checked")]
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonRadioButtonDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonRadioButtonDesigner))]
     [DesignerCategory("code")]
     [Description("Allow user to set or clear the associated option.")]
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
@@ -206,12 +206,12 @@ namespace ComponentFactory.Krypton.Toolkit
             get => base.Padding;
             set => base.Padding = value;
         }
-        
+
         /// <summary>
-		/// Gets or sets the text associated with this control. 
-		/// </summary>
-		[Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
-		public override string Text
+        /// Gets or sets the text associated with this control. 
+        /// </summary>
+        [Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        public override string Text
 		{
 			get => Values.Text;
 

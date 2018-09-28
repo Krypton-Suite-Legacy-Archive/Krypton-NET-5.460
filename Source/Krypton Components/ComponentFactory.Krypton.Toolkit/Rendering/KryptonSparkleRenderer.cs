@@ -6,20 +6,23 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Drawing.Imaging;
-using System.Drawing.Drawing2D;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace ComponentFactory.Krypton.Toolkit
 {
-    internal class KryptonSparkleRenderer : KryptonProfessionalRenderer
+    /// <summary>
+    /// 
+    /// </summary>
+    public class KryptonSparkleRenderer : KryptonProfessionalRenderer
     {
         #region LinearItemColors
         private class LinearItemColors
@@ -212,7 +215,7 @@ namespace ComponentFactory.Krypton.Toolkit
             }
         }
         #endregion
-        
+
         #region OnRenderButtonBackground
         /// <summary>
         /// Raises the RenderButtonBackground event. 
@@ -362,7 +365,7 @@ namespace ComponentFactory.Krypton.Toolkit
         /// <param name="e">A ToolStripItemTextRenderEventArgs that contains the event data.</param>
         protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         {
-            if ((e.ToolStrip is ToolStrip) || 
+            if ((e.ToolStrip is ToolStrip) ||
                 (e.ToolStrip is ContextMenuStrip) ||
                 (e.ToolStrip is ToolStripDropDownMenu))
             {
@@ -388,22 +391,22 @@ namespace ComponentFactory.Krypton.Toolkit
                             e.TextColor = KCT.MenuItemText;
                             break;
                         default:
-                        {
-                            if (((e.ToolStrip is ToolStripDropDownMenu) || (e.ToolStrip is ToolStripOverflow)) && !e.Item.Selected)
                             {
-                                e.TextColor = KCT.MenuItemText;
+                                if (((e.ToolStrip is ToolStripDropDownMenu) || (e.ToolStrip is ToolStripOverflow)) && !e.Item.Selected)
+                                {
+                                    e.TextColor = KCT.MenuItemText;
+                                }
+                                else if ((e.ToolStrip is ToolStrip) && ((e.Item is ToolStripSplitButton) || (e.Item is ToolStripDropDownButton)) &&
+                                         e.Item.Pressed)
+                                {
+                                    e.TextColor = KCT.MenuItemText;
+                                }
+                                else
+                                {
+                                    e.TextColor = KCT.ToolStripText;
+                                }
+                                break;
                             }
-                            else if ((e.ToolStrip is ToolStrip) && ((e.Item is ToolStripSplitButton) || (e.Item is ToolStripDropDownButton)) &&
-                                     e.Item.Pressed)
-                            {
-                                e.TextColor = KCT.MenuItemText;
-                            }
-                            else
-                            {
-                                e.TextColor = KCT.ToolStripText;
-                            }
-                            break;
-                        }
                     }
                 }
 
@@ -693,12 +696,12 @@ namespace ComponentFactory.Krypton.Toolkit
 
                     // Check if the status strip is inside a KryptonForm and using the Sparkle renderer, in 
                     // which case we want to extend the drawing down into the border area for an integrated look
-                    if (e.ToolStrip.Visible 
-                        && (e.ToolStrip.Dock == DockStyle.Bottom) 
-                        && (e.ToolStrip.RenderMode == ToolStripRenderMode.ManagerRenderMode) 
+                    if (e.ToolStrip.Visible
+                        && (e.ToolStrip.Dock == DockStyle.Bottom)
+                        && (e.ToolStrip.RenderMode == ToolStripRenderMode.ManagerRenderMode)
                         && (ToolStripManager.Renderer is KryptonSparkleRenderer)
-                        && owner is KryptonForm kryptonForm 
-                        && (e.ToolStrip.Bottom == owner.ClientSize.Height) 
+                        && owner is KryptonForm kryptonForm
+                        && (e.ToolStrip.Bottom == owner.ClientSize.Height)
                         )
                     {
                         // Get the window borders
@@ -737,7 +740,7 @@ namespace ComponentFactory.Krypton.Toolkit
                             innerPath.CloseFigure();
 
                             // Fill with a gradient brush
-                            using (LinearGradientBrush innerBrush = new LinearGradientBrush(new Rectangle((int)backRect.X - 1, (int)backRect.Y - 1, 
+                            using (LinearGradientBrush innerBrush = new LinearGradientBrush(new Rectangle((int)backRect.X - 1, (int)backRect.Y - 1,
                                     (int)backRect.Width + 2, (int)backRect.Height + 1),
                                 KCT.StatusStripGradientBegin,
                                 KCT.StatusStripGradientEnd,
@@ -745,7 +748,7 @@ namespace ComponentFactory.Krypton.Toolkit
                             {
                                 innerBrush.Blend = _statusStripBlend;
 
-                                using(AntiAlias aa = new AntiAlias(e.Graphics))
+                                using (AntiAlias aa = new AntiAlias(e.Graphics))
                                 {
                                     e.Graphics.FillPath(innerBrush, innerPath);
                                 }
@@ -1152,7 +1155,7 @@ namespace ComponentFactory.Krypton.Toolkit
             // Reduce rect draw drawing inside the border
             backRect.Inflate(-1, -1);
 
-            using (LinearGradientBrush  backBrush = new LinearGradientBrush(backRect, colors.Fill1, colors.Fill2, 90f))
+            using (LinearGradientBrush backBrush = new LinearGradientBrush(backRect, colors.Fill1, colors.Fill2, 90f))
             {
                 g.FillRectangle(backBrush, backRect);
             }
@@ -1164,8 +1167,8 @@ namespace ComponentFactory.Krypton.Toolkit
         {
             // Drawing with anti aliasing to create smoother appearance
             using (AntiAlias aa = new AntiAlias(g))
-                using (Pen borderPen = new Pen(colors.Border))
-                    using (GraphicsPath borderPath = CreateBorderPath(backRect, CUT_MENU_ITEM_BACK))
+            using (Pen borderPen = new Pen(colors.Border))
+            using (GraphicsPath borderPath = CreateBorderPath(backRect, CUT_MENU_ITEM_BACK))
             {
                 g.DrawPath(borderPen, borderPath);
             }
@@ -1230,7 +1233,7 @@ namespace ComponentFactory.Krypton.Toolkit
 
                 // Use solid color for the border
                 using (Pen borderPen = new Pen(colors.Border))
-                    using (GraphicsPath borderPath = CreateBorderPath(backRect, CUT_MENU_ITEM_BACK))
+                using (GraphicsPath borderPath = CreateBorderPath(backRect, CUT_MENU_ITEM_BACK))
                 {
                     g.DrawPath(borderPen, borderPath);
                 }
@@ -1496,8 +1499,8 @@ namespace ComponentFactory.Krypton.Toolkit
         private static GraphicsPath CreateIndeterminatePath(Rectangle rect)
         {
             // Get the center point of the rect
-            float x = (float)rect.X + (((float)rect.Width - 6) / 2);
-            float y = (float)rect.Y + (((float)rect.Height - 6) / 2);
+            float x = rect.X + (((float)rect.Width - 6) / 2);
+            float y = rect.Y + (((float)rect.Height - 6) / 2);
 
             GraphicsPath path = new GraphicsPath();
             path.AddEllipse(x, y, 6f, 6f);

@@ -18,28 +18,40 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>build\$(Configuration)</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>build\$(Configuration)</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Krypton.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ComponentFactory.Krypton.Design, Version=4.70.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Bin\Versions\4.7\ComponentFactory.Krypton.Design.dll</HintPath>
+    <Reference Include="Krypton Docking, Version=5.460.591.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonToolkitSuite5470.5.460.700\lib\net47\Krypton Docking.dll</HintPath>
     </Reference>
-    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.70.506.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Bin\Versions\4.7\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    <Reference Include="Krypton Navigator, Version=5.460.590.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonToolkitSuite5470.5.460.700\lib\net47\Krypton Navigator.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton Ribbon, Version=5.460.591.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonToolkitSuite5470.5.460.700\lib\net47\Krypton Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton Toolkit, Version=5.460.700.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonToolkitSuite5470.5.460.700\lib\net47\Krypton Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton Workspace, Version=5.460.592.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonToolkitSuite5470.5.460.700\lib\net47\Krypton Workspace.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,6 +80,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -84,5 +97,11 @@
   <ItemGroup>
     <None Include="Resources\AppMenuSave.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Krypton.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(ProjectDir)..\..\..\Binaries\" /D /R /Y /S</PostBuildEvent>
+  </PropertyGroup>
 </Project>

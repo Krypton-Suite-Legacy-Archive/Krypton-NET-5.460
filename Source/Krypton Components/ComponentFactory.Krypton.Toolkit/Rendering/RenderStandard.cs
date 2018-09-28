@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -3466,7 +3466,7 @@ namespace ComponentFactory.Krypton.Toolkit
                     drawRect.Width -= positionSize.Width;
 
                     // Draw a marker for each value between min and max
-                    float factor = (range == 0) ? float.MinValue : (float)drawRect.Width / range;
+                    float factor = (range == 0) ? float.MinValue : drawRect.Width / range;
                     for (int i = minimum, y = 0; i <= maximum; i += frequency, y += frequency)
                     {
                         float offset = drawRect.X + (factor * y);
@@ -3502,7 +3502,7 @@ namespace ComponentFactory.Krypton.Toolkit
                     drawRect.Height -= positionSize.Height;
 
                     // Draw a marker for each value between min and max
-                    float factor = (range == 0) ? float.MinValue : (float)drawRect.Height / range;
+                    float factor = (range == 0) ? float.MinValue : drawRect.Height / range;
                     for (int i = minimum, y = 0; i <= maximum; i += frequency, y += frequency)
                     {
                         float offset = drawRect.Y + (factor * y);
@@ -5332,7 +5332,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 case PaletteImageStyle.Stretch:
                     brush.WrapMode = WrapMode.Clamp;
                     brush.TranslateTransform(rect.Left, rect.Top);
-                    brush.ScaleTransform((float)rect.Width / (float)image.Width, (float)rect.Height / (float)image.Height);
+                    brush.ScaleTransform(rect.Width / (float)image.Width, rect.Height / (float)image.Height);
                     break;
                 case PaletteImageStyle.Tile:
                     brush.WrapMode = WrapMode.Tile;
@@ -5976,7 +5976,7 @@ namespace ComponentFactory.Krypton.Toolkit
                                            allocation, displayRect,
                                            spacingGap, memento.LongTextTrimming,
                                            ref requiredSpace,
-                    memento.ShortTextMemento.Format.FormatFlags.HasFlag(StringFormatFlags.NoClip))
+                    (memento.ShortTextMemento!=null)?memento.ShortTextMemento.Format.FormatFlags.HasFlag(StringFormatFlags.NoClip): true)
                 )
                 {
                     // Cache the actual draw size of the text

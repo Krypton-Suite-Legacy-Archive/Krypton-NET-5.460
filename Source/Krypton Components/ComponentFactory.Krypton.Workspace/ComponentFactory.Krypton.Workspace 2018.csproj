@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ComponentFactory.Krypton.Workspace</RootNamespace>
-    <AssemblyName>ComponentFactory.Krypton.Workspace</AssemblyName>
+    <AssemblyName>Krypton Workspace</AssemblyName>
     <ApplicationIcon>Krypton.ico</ApplicationIcon>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
@@ -20,7 +20,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -34,7 +34,6 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile />
     <ShouldCreateLogs>True</ShouldCreateLogs>
     <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
@@ -49,30 +48,31 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Bin\Versions\4.6\</OutputPath>
+    <OutputPath>build\$(Configuration)</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\Bin\Versions\4.6\ComponentFactory.Krypton.Workspace.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\Krypton Workspace.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Bin\</OutputPath>
+    <OutputPath>build\$(Configuration)</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\Bin\ComponentFactory.Krypton.Workspace.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\Krypton Workspace.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
@@ -111,6 +111,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="View Draw\ViewDrawWorkspaceSeparator.cs" />
+    <Compile Include="Workspace\KryptonWorkspaceActionList.cs" />
+    <Compile Include="Workspace\KryptonWorkspaceCellDesigner.cs" />
+    <Compile Include="Workspace\KryptonWorkspaceCollectionEditor.cs" />
+    <Compile Include="Workspace\KryptonWorkspaceDesigner.cs" />
+    <Compile Include="Workspace\KryptonWorkspaceSequenceDesigner.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -136,33 +141,6 @@
     <None Include="StrongKrypton.snk" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ComponentFactory.Krypton.Navigator\ComponentFactory.Krypton.Navigator 2018.csproj">
       <Project>{dc0dd714-4d19-4f31-a6d0-ea209d4f0ea8}</Project>
       <Name>ComponentFactory.Krypton.Navigator 2018</Name>
@@ -181,7 +159,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release "$(ProjectDir)..\GacUtil.exe" -i "$(TargetPath)" /f</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(ProjectDir)..\..\..\Bin\" /D /R /Y /S</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

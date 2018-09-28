@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -25,7 +25,7 @@ namespace ComponentFactory.Krypton.Toolkit
     [ToolboxBitmap(typeof(KryptonGroupBox), "ToolboxBitmaps.KryptonGroupBox.bmp")]
     [DefaultEvent("Paint")]
 	[DefaultProperty("ValuesPrimary")]
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonGroupBoxDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonGroupBoxDesigner))]
     [DesignerCategory("code")]
     [Description("Display frame around a group of related controls with an optional caption.")]
     [Docking(DockingBehavior.Ask)]
@@ -208,11 +208,11 @@ namespace ComponentFactory.Krypton.Toolkit
             }
         }
 
-		/// <summary>
-		/// Gets or sets the text associated with this control. 
-		/// </summary>
-		[Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
-		public override string Text
+        /// <summary>
+        /// Gets or sets the text associated with this control. 
+        /// </summary>
+        [Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        public override string Text
 		{
 			get => Values.Heading;
 
@@ -243,7 +243,7 @@ namespace ComponentFactory.Krypton.Toolkit
         [Category("Visuals")]
         [Description("The percentage the caption should overlap the group area.")]
         [TypeConverter(typeof(OpacityConverter))]
-        [DefaultValue((double)0.5)]
+        [DefaultValue(0.5)]
         public double CaptionOverlap
         {
             get => _drawDocker.CaptionOverlap;

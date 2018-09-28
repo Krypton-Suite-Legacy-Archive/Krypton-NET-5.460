@@ -6,18 +6,19 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Diagnostics;
-using System.Windows.Forms;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
-using System.Windows.Forms.VisualStyles;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+
 using Microsoft.Win32;
 
 namespace ComponentFactory.Krypton.Toolkit
@@ -315,7 +316,7 @@ namespace ComponentFactory.Krypton.Toolkit
             {
                 if (_paletteMode != value)
                 {
-                    // Action despends on new value
+                    // Action depends on new value
                     switch (value)
                     {
                         case PaletteMode.Custom:
@@ -393,7 +394,7 @@ namespace ComponentFactory.Krypton.Toolkit
                         _paletteMode = PaletteMode.Custom;
                     }
 
-                    // If real change has occured
+                    // If real change has occurred
                     if (old != _localPalette)
                     {
                         // Raise the change event
@@ -490,7 +491,7 @@ namespace ComponentFactory.Krypton.Toolkit
         public Padding RealWindowBorders => CommonHelper.GetWindowBorders(CreateParams);
 
         /// <summary>
-        /// Gets a count of the number of paints that have occured.
+        /// Gets a count of the number of paints that have occurred.
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -533,9 +534,9 @@ namespace ComponentFactory.Krypton.Toolkit
             if (!IsDisposed && !Disposing && IsHandleCreated)
             {
                 PI.SetWindowPos(Handle, IntPtr.Zero, 0, 0, 0, 0,
-                                (uint)(PI.SWP_NOACTIVATE | PI.SWP_NOMOVE |
-                                       PI.SWP_NOZORDER | PI.SWP_NOSIZE |
-                                       PI.SWP_NOOWNERZORDER | PI.SWP_FRAMECHANGED));
+                                PI.SWP_NOACTIVATE | PI.SWP_NOMOVE |
+                                PI.SWP_NOZORDER | PI.SWP_NOSIZE |
+                                PI.SWP_NOOWNERZORDER | PI.SWP_FRAMECHANGED);
             }
         }
         #endregion
@@ -684,7 +685,7 @@ namespace ComponentFactory.Krypton.Toolkit
                         IntPtr hRgn = invalidRegion.GetHrgn(g);
 
                         PI.RedrawWindow(Handle, IntPtr.Zero, hRgn,
-                                        (uint)(PI.RDW_FRAME | PI.RDW_UPDATENOW | PI.RDW_INVALIDATE));
+                                        PI.RDW_FRAME | PI.RDW_UPDATENOW | PI.RDW_INVALIDATE);
 
                         PI.DeleteObject(hRgn);
                     }
@@ -1109,6 +1110,8 @@ namespace ComponentFactory.Krypton.Toolkit
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                 mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
                 mmi.ptMaxSize.y = Math.Abs(rcWorkArea.bottom - rcWorkArea.top);
+                mmi.ptMinTrackSize.x = Math.Max(mmi.ptMinTrackSize.x*2, this.MinimumSize.Width);
+                mmi.ptMinTrackSize.y = Math.Max(mmi.ptMinTrackSize.y*2, this.MinimumSize.Height);
             }
 
             Marshal.StructureToPtr(mmi, m.LParam, true);
@@ -1566,7 +1569,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 }
             }
 
-            // Bump the number of paints that have occured
+            // Bump the number of paints that have occurred
             PaintCount++;
         }
 
@@ -1748,7 +1751,7 @@ namespace ComponentFactory.Krypton.Toolkit
 
         private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
         {
-            // If a change has occured that could effect the color table then it needs regenerating
+            // If a change has occurred that could effect the color table then it needs regenerating
             switch (e.Category)
             {
                 case UserPreferenceCategory.Icon:

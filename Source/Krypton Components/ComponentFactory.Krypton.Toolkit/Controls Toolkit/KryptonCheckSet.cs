@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -27,7 +27,7 @@ namespace ComponentFactory.Krypton.Toolkit
     [DefaultEvent("CheckedButtonChanged")]
     [DefaultProperty("CheckButtons")]
     [DesignerCategory("code")]
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonCheckSetDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonCheckSetDesigner))]
     [Description("Provide exclusive checked logic for a set of KryptonCheckButton controls.")]
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     [ComVisible(true)]
@@ -419,7 +419,7 @@ namespace ComponentFactory.Krypton.Toolkit
         [Category("Behavior")]
         [Description("Determine which of the associated buttons is checked.")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        [Editor("ComponentFactory.Krypton.Toolkit.KryptonCheckButtonCollectionEditor, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e", typeof(UITypeEditor))]
+        [Editor(typeof(ComponentFactory.Krypton.Toolkit.KryptonCheckButtonCollectionEditor), typeof(UITypeEditor))]
         [RefreshProperties(RefreshProperties.All)]
         public KryptonCheckButtonCollection CheckButtons { get; }
 

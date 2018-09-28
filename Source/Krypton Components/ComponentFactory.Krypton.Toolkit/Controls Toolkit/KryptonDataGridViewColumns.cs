@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -86,7 +86,7 @@ namespace ComponentFactory.Krypton.Toolkit
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewTextBoxCell cells.
     /// </summary>
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonTextBoxColumnDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonTextBoxColumnDesigner))]
     [ToolboxBitmap(typeof(KryptonDataGridViewTextBoxColumn), "ToolboxBitmaps.KryptonTextBox.bmp")]
     public class KryptonDataGridViewTextBoxColumn : DataGridViewColumn
     {
@@ -1433,7 +1433,7 @@ namespace ComponentFactory.Krypton.Toolkit
         /// Gets or sets the default text displayed on the button cell.
         /// </summary>
         [Category("Appearance")]
-        [DefaultValue((string)null)]
+        [DefaultValue(null)]
         public string Text
         {
             get => _text;
@@ -2073,7 +2073,7 @@ namespace ComponentFactory.Krypton.Toolkit
         /// Gets or sets the default text displayed on the link cell.
         /// </summary>
         [Category("Appearance")]
-        [DefaultValue((string)null)]
+        [DefaultValue(null)]
         public string Text
         {
             get => _text;
@@ -2705,7 +2705,7 @@ namespace ComponentFactory.Krypton.Toolkit
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewNumericUpDownCell cells.
     /// </summary>
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonNumericUpDownColumnDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonNumericUpDownColumnDesigner))]
     [ToolboxBitmap(typeof(KryptonDataGridViewNumericUpDownColumn), "ToolboxBitmaps.KryptonNumericUpDown.bmp")]
     public class KryptonDataGridViewNumericUpDownColumn : DataGridViewColumn
     {
@@ -3954,7 +3954,7 @@ namespace ComponentFactory.Krypton.Toolkit
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewDomainUpDownCell cells.
     /// </summary>
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonDomainUpDownColumnDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonDomainUpDownColumnDesigner))]
     [ToolboxBitmap(typeof(KryptonDataGridViewDomainUpDownColumn), "ToolboxBitmaps.KryptonDomainUpDown.bmp")]
     public class KryptonDataGridViewDomainUpDownColumn : DataGridViewColumn
     {
@@ -4575,7 +4575,7 @@ namespace ComponentFactory.Krypton.Toolkit
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewComboBoxCell cells.
     /// </summary>
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonComboBoxColumnDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonComboBoxColumnDesigner))]
     [ToolboxBitmap(typeof(KryptonDataGridViewComboBoxColumn), "ToolboxBitmaps.KryptonComboBox.bmp")]
     public class KryptonDataGridViewComboBoxColumn : DataGridViewColumn
     {
@@ -5773,7 +5773,7 @@ namespace ComponentFactory.Krypton.Toolkit
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewDateTimePickerCell cells.
     /// </summary>
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonDateTimePickerColumnDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonDateTimePickerColumnDesigner))]
     [ToolboxBitmap(typeof(KryptonDataGridViewDateTimePickerColumn), "ToolboxBitmaps.KryptonDateTimePicker.bmp")]
     public class KryptonDataGridViewDateTimePickerColumn : DataGridViewColumn
     {
@@ -7909,7 +7909,7 @@ namespace ComponentFactory.Krypton.Toolkit
     /// <summary>
     /// Hosts a collection of KryptonDataGridViewMaskedTextBoxCell cells.
     /// </summary>
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonMaskedTextBoxColumnDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonMaskedTextBoxColumnDesigner))]
     [ToolboxBitmap(typeof(KryptonDataGridViewMaskedTextBoxColumn), "ToolboxBitmaps.KryptonMaskedTextBox.bmp")]
     public class KryptonDataGridViewMaskedTextBoxColumn : DataGridViewColumn
     {

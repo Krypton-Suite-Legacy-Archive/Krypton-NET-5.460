@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -19,7 +19,7 @@ namespace ComponentFactory.Krypton.Toolkit
     /// <summary>
     /// Helper functions for drawing in the glass styles.
     /// </summary>
-    internal class RenderGlassHelpers
+    public class RenderGlassHelpers
     {
         #region Static Fields
         private static readonly Color _glassColorTopL = Color.FromArgb(208, Color.White);

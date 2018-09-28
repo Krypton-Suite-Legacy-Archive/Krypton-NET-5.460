@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -30,7 +30,7 @@ namespace ComponentFactory.Krypton.Ribbon
     [ToolboxBitmap(typeof(KryptonRibbon), "ToolboxBitmaps.KryptonRibbon.bmp")]
     [DefaultEvent("SelectedTabChanged")]
     [DefaultProperty("RibbonTabs")]
-    [Designer("ComponentFactory.Krypton.Ribbon.KryptonRibbonDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Ribbon.KryptonRibbonDesigner))]
     [DesignerCategory("code")]
     [Description("Ribbon control presents a tabbed set of user options.")]
     [Docking(DockingBehavior.Never)]
@@ -427,7 +427,8 @@ namespace ComponentFactory.Krypton.Ribbon
         /// </summary>
         [Category("Visuals")]
         [Description("Is ribbon is allowed to override form chrome by integrating instead with operating system chrome.")]
-        [DefaultValue(true)]
+        //[DefaultValue(true)]
+        [DefaultValue(false)]
         public bool AllowFormIntegrate
         {
             get => _allowFormIntegrate;
@@ -747,7 +748,7 @@ namespace ComponentFactory.Krypton.Ribbon
         [Category("Values")]
         [Description("Collection of ribbon quick access toolbar buttons.")]
         [MergableProperty(false)]
-        [Editor("ComponentFactory.Krypton.Ribbon.KryptonRibbonQATButtonCollectionEditor, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e", typeof(UITypeEditor))]
+        [Editor(typeof(ComponentFactory.Krypton.Ribbon.KryptonRibbonQATButtonCollectionEditor), typeof(UITypeEditor))]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public KryptonRibbonQATButtonCollection QATButtons { get; private set; }
 

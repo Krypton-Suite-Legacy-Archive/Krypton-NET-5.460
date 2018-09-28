@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -51,7 +51,7 @@ namespace ComponentFactory.Krypton.Toolkit
             KryptonContextMenuRadioButton.SetPaletteRedirect(provider.ProviderRedirector);
 
             // Create the content for the actual heading text/image
-            ViewDrawContent = new ViewDrawContent((ItemEnabled ? (IPaletteContent)KryptonContextMenuRadioButton.OverrideNormal : (IPaletteContent)KryptonContextMenuRadioButton.OverrideDisabled),
+            ViewDrawContent = new ViewDrawContent((ItemEnabled ? KryptonContextMenuRadioButton.OverrideNormal : KryptonContextMenuRadioButton.OverrideDisabled),
                                                _contentValues, VisualOrientation.Top)
             {
                 UseMnemonic = true,

@@ -17,9 +17,9 @@ using System.Security.Permissions;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("5.460.1.0")]
-[assembly: AssemblyFileVersion("5.460.1.0")]
-[assembly: AssemblyInformationalVersion("5.460.1.0")]
+[assembly: AssemblyVersion("5.460.5001.0")]
+[assembly: AssemblyFileVersion("5.460.5001.0")]
+[assembly: AssemblyInformationalVersion("5.460.5001.0")]
 [assembly: AssemblyCopyright("© Component Factory Pty Ltd 2012. All rights reserved.")]
 [assembly: AssemblyProduct("Auto Shrinking Groups")]
 [assembly: AssemblyDefaultAlias("AutoShrinkingGroups.dll")]

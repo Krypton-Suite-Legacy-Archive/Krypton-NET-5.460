@@ -10,8 +10,8 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ComponentFactory.Krypton.Docking</RootNamespace>
-    <AssemblyName>ComponentFactory.Krypton.Docking</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <AssemblyName>Krypton Docking</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
@@ -36,7 +36,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile />
     <ShouldCreateLogs>True</ShouldCreateLogs>
     <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
@@ -51,24 +50,24 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Bin\Versions\4.6\</OutputPath>
+    <OutputPath>build\$(Configuration)</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\Bin\Versions\4.6\ComponentFactory.Krypton.Docking.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\Krypton Docking.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Bin\</OutputPath>
+    <OutputPath>build\$(Configuration)</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\Bin\ComponentFactory.Krypton.Docking.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\Krypton Docking.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -202,7 +201,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release "$(ProjectDir)..\GacUtil.exe" -i "$(TargetPath)" /f</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(ProjectDir)..\..\..\Bin\" /D /R /Y /S</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -1091,7 +1091,7 @@ namespace ComponentFactory.Krypton.Navigator
             {
                 // Grab the page associated view elements
                 ViewDrawNavCheckButtonStack checkButton = (ViewDrawNavCheckButtonStack)_pageLookup[page];
-                ViewDrawBorderEdge buttonEdge = (ViewDrawBorderEdge)_buttonEdgeLookup[page];
+                ViewDrawBorderEdge buttonEdge = _buttonEdgeLookup[page];
 
                 // Add to the child collection with the correct docking style
                 if (dockTopLeft)

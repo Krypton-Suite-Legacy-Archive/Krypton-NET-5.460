@@ -12,15 +12,13 @@ using System;
 using System.Security;
 using System.Resources;
 using System.Reflection;
-using System.Diagnostics;
-using System.Security.Permissions;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("5.460.0.0")]
-[assembly: AssemblyFileVersion("5.460.0.0")]
+[assembly: AssemblyVersion("5.460.4.0")]
+[assembly: AssemblyFileVersion("5.460.4.0")]
 [assembly: AssemblyCopyright("© Component Factory Pty Ltd 2012. All rights reserved.")]
-[assembly: AssemblyInformationalVersion("5.460.0.0")]
+[assembly: AssemblyInformationalVersion("5.460.4.0")]
 [assembly: AssemblyProduct("KryptonCheckButton Examples")]
 [assembly: AssemblyDefaultAlias("KryptonCheckButtonExamples.dll")]
 [assembly: AssemblyTitle("KryptonCheckButton Examples")]

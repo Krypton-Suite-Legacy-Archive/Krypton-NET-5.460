@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -52,7 +52,7 @@ namespace ComponentFactory.Krypton.Toolkit
         /// Generate an appropriate color table.
         /// </summary>
         /// <returns>KryptonColorTable instance.</returns>
-        internal override KryptonProfessionalKCT GenerateColorTable()
+        internal override KryptonProfessionalKCT GenerateColorTable(bool _)
         {
             if (Environment.OSVersion.Version.Major < 6)
             {
@@ -80,7 +80,7 @@ namespace ComponentFactory.Krypton.Toolkit
 
             // Not a recognized scheme, so get the base class to generate something 
             // that looks sensible based on the current system settings
-            return base.GenerateColorTable();
+            return base.GenerateColorTable(true);
         }
         #endregion
 

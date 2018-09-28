@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -25,7 +25,7 @@ namespace ComponentFactory.Krypton.Toolkit
     [DefaultEvent("ValueChanged")]
 	[DefaultProperty("Value")]
     [DefaultBindingProperty("Value")]
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonDateTimePickerDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonDateTimePickerDesigner))]
     [DesignerCategory("code")]
     [Description("Enables the user to select a date and time, and to display that date and time in a specified format.")]
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
@@ -1735,7 +1735,7 @@ namespace ComponentFactory.Krypton.Toolkit
         protected override void WndProc(ref Message m)
         {
             // At design time inside the ribbon we are transparent to the mouse
-            if ((m.Msg == (int)PI.WM_NCHITTEST) && InRibbonDesignMode)
+            if ((m.Msg == PI.WM_NCHITTEST) && InRibbonDesignMode)
             {
                 // Allow actions to occur to window beneath us
                 m.Result = (IntPtr)PI.HTTRANSPARENT;

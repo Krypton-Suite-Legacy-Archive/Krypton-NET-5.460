@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System.ComponentModel;
@@ -21,7 +21,7 @@ namespace ComponentFactory.Krypton.Toolkit
 	/// </summary>
 	[ToolboxItem(false)]
 	[DesignerCategory("code")]
-	[Designer("System.Windows.Forms.Design.ParentControlDesigner, System.Design")]
+	[Designer(typeof(System.Windows.Forms.Design.ParentControlDesigner))]
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     [ComVisible(true)]
 	public abstract class VisualControlContainment : VisualControl

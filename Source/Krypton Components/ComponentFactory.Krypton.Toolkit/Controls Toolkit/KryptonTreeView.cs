@@ -6,18 +6,18 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
+using System.Collections;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Drawing.Drawing2D;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Collections;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace ComponentFactory.Krypton.Toolkit
 {
@@ -28,7 +28,7 @@ namespace ComponentFactory.Krypton.Toolkit
     [ToolboxBitmap(typeof(KryptonTreeView), "ToolboxBitmaps.KryptonTreeView.bmp")]
     [DefaultEvent("AfterSelect")]
     [DefaultProperty("Nodes")]
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonTreeViewDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonTreeViewDesigner))]
     [DesignerCategory("code")]
     [Description("Displays a hierarchical collection of labeled items, each represented by a TreeNode")]
     [Docking(DockingBehavior.Ask)]
@@ -881,7 +881,7 @@ namespace ComponentFactory.Krypton.Toolkit
         [Category("Behavior")]
         [Description("The ImageList control from which nodes images are taken.")]
         [RefreshProperties(RefreshProperties.Repaint)]
-        [DefaultValue((string)null)]
+        [DefaultValue(null)]
         public ImageList ImageList
         {
             get => _treeView.ImageList;
@@ -1023,7 +1023,7 @@ namespace ComponentFactory.Krypton.Toolkit
         /// </summary>
         [Category("Behavior")]
         [Description("The ImageList used by the control for custom states.")]
-        [DefaultValue((string)null)]
+        [DefaultValue(null)]
         public ImageList StateImageList
         {
             get => _treeView.StateImageList;
@@ -1730,6 +1730,21 @@ namespace ComponentFactory.Krypton.Toolkit
             PerformNeedPaint(true);
             _treeView.Invalidate();
             base.OnMouseLeave(e);
+        }
+
+        /// <summary>
+        /// Raises the MouseDown event.
+        /// </summary>
+        /// <param name="e">A MouseEventArgs that contains the event data.</param>
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            _mouseOver = false;
+
+            PerformNeedPaint(true);
+
+            _treeView.Invalidate();
+
+            base.OnMouseDown(e);
         }
 
         /// <summary>

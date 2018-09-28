@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ComponentFactory.Krypton.Toolkit;
+using System;
 using System.Windows.Forms;
-using ComponentFactory.Krypton.Toolkit;
 
-namespace Test_MessageBox_Clipping
+namespace TestMessageBoxClipping
 {
-    public partial class Form1 : Form
+    public partial class Form1 : KryptonForm
     {
         private const string SEED_TEXT =
             @"// *****************************************************************************
@@ -19,7 +14,7 @@ namespace Test_MessageBox_Clipping
 //  proprietary information of Component Factory Pty Ltd, 13 Swallows Close, 
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
-//  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-4.7)
+//  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
 //  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 ";
@@ -205,8 +200,8 @@ namespace Test_MessageBox_Clipping
             }
             catch (Exception ex)
             {
-                MessageBox.Show( "ex.StackTrace", ex.Message);
-                KryptonMessageBox.Show( "ex.StackTrace", ex.Message);
+                MessageBox.Show("ex.StackTrace", ex.Message);
+                KryptonMessageBox.Show("ex.StackTrace", ex.Message);
             }
         }
 
@@ -218,8 +213,8 @@ namespace Test_MessageBox_Clipping
             }
             catch (Exception ex)
             {
-                MessageBox.Show( ex.StackTrace, "ex.Message", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                KryptonMessageBox.Show( ex.StackTrace, "ex.Message", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(ex.StackTrace, "ex.Message", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                KryptonMessageBox.Show(ex.StackTrace, "ex.Message", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
     }

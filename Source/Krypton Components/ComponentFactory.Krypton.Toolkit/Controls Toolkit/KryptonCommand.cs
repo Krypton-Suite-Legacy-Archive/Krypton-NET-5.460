@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -26,7 +26,7 @@ namespace ComponentFactory.Krypton.Toolkit
     [DefaultEvent("Click")]
     [DefaultProperty("Text")]
     [DesignerCategory("code")]
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonCommandDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonCommandDesigner))]
     [Description("Defines state and events for a single command.")]
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
     [ComVisible(true)]

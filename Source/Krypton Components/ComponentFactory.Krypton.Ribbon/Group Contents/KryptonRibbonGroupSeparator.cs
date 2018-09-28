@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System.Drawing;
@@ -21,7 +21,7 @@ namespace ComponentFactory.Krypton.Ribbon
     /// </summary>
     [ToolboxItem(false)]
     [ToolboxBitmap(typeof(KryptonRibbonGroupSeparator), "ToolboxBitmaps.KryptonRibbonGroupSeparator.bmp")]
-    [Designer("ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupSeparatorDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupSeparatorDesigner))]
     [DesignerCategory("code")]
     [DesignTimeVisible(false)]
     [DefaultProperty("Visible")]

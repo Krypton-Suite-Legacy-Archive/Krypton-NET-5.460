@@ -6,20 +6,23 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Drawing.Imaging;
-using System.Drawing.Drawing2D;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace ComponentFactory.Krypton.Toolkit
 {
-    internal class KryptonOffice2007Renderer : KryptonProfessionalRenderer
+    /// <summary>
+    /// 
+    /// </summary>
+    public class KryptonOffice2007Renderer : KryptonProfessionalRenderer
     {
         #region GradientItemColors
         private class GradientItemColors

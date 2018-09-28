@@ -5,7 +5,7 @@
 //  proprietary information of Component Factory Pty Ltd, PO Box 1504, 
 //  Glen Waverley, Vic 3150, Australia and are supplied subject to licence terms.
 // 
-//  Version 5.460.0.0 	www.ComponentFactory.com
+//  Version 4.5.0.0 	www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -17,9 +17,9 @@ using System.Security.Permissions;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("17.10.1.15")]
-[assembly: AssemblyFileVersion("17.10.1.15")]
-[assembly: AssemblyInformationalVersion("5.460.0.0")]
+[assembly: AssemblyVersion("17.10.6005.15")]
+[assembly: AssemblyFileVersion("17.10.6005.15")]
+[assembly: AssemblyInformationalVersion("4.5.5.0")]
 [assembly: AssemblyCopyright("© Component Factory Pty Ltd 2012. All rights reserved.")]
 [assembly: AssemblyProduct("Krypton Explorer")]
 [assembly: AssemblyDefaultAlias("KryptonExplorer.dll")]

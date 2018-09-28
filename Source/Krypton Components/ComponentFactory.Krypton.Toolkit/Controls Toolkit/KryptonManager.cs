@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -25,7 +25,7 @@ namespace ComponentFactory.Krypton.Toolkit
     /// </summary>
     [ToolboxItem(true)]
     [ToolboxBitmap(typeof(KryptonManager), "ToolboxBitmaps.KryptonManager.bmp")]
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonManagerDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonManagerDesigner))]
     [DefaultProperty("GlobalPaletteMode")]
     [Description("Access global Krypton settings.")]
     [ClassInterface(ClassInterfaceType.AutoDispatch)]

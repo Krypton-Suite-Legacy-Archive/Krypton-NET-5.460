@@ -5,15 +5,10 @@
 //  proprietary information of Component Factory Pty Ltd, PO Box 1504, 
 //  Glen Waverley, Vic 3150, Australia and are supplied subject to licence terms.
 // 
-//  Version 4.5.0.0 	www.ComponentFactory.com
+//  Version 5.460.0.0 	www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
-using System.Text;
-using System.Drawing;
-using System.Windows.Forms;
-using System.ComponentModel;
-using System.Collections.Generic;
 using ComponentFactory.Krypton.Toolkit;
 
 namespace KryptonPaletteExamples
@@ -101,11 +96,20 @@ namespace KryptonPaletteExamples
         {
             kryptonManager.GlobalPalette = kryptonPaletteCustom;
             propertyGrid.SelectedObject = kryptonPaletteCustom;
+
+            btnExport.Enabled = true;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            kryptonPaletteCustom.Export();
+
+            btnExport.Enabled = false;
         }
     }
 }

@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ComponentFactory.Krypton.Ribbon</RootNamespace>
-    <AssemblyName>ComponentFactory.Krypton.Ribbon</AssemblyName>
+    <AssemblyName>Krypton Ribbon</AssemblyName>
     <ApplicationIcon>Krypton.ico</ApplicationIcon>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>StrongKrypton.snk</AssemblyOriginatorKeyFile>
@@ -19,7 +19,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -34,7 +34,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile />
     <ShouldCreateLogs>True</ShouldCreateLogs>
     <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
@@ -49,30 +48,31 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Bin\Versions\4.6\</OutputPath>
+    <OutputPath>build\$(Configuration)</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\Bin\Versions\4.6\ComponentFactory.Krypton.Ribbon.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\Krypton Ribbon.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Bin\</OutputPath>
+    <OutputPath>build\$(Configuration)</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\Bin\ComponentFactory.Krypton.Ribbon.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\Krypton Ribbon.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
@@ -234,6 +234,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Ribbon\KryptonGalleryActionList.cs" />
+    <Compile Include="Ribbon\KryptonGalleryDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonActionList.cs" />
+    <Compile Include="Ribbon\KryptonRibbonDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupButtonDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupCheckBoxDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupClusterButtonDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupClusterCollectionEditor.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupClusterColorButtonDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupClusterDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupColorButtonDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupComboBoxDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupContainerCollectionEditor.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupCustomControlDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupDateTimePickerDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupDomainUpDownDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupGalleryDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupLabelDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupLinesCollectionEditor.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupLinesDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupMaskedTextBoxDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupNumericUpDownDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupRadioButtonDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupRichTextBoxDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupSeparatorDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupTextBoxDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupTrackBarDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupTripleCollectionEditor.cs" />
+    <Compile Include="Ribbon\KryptonRibbonGroupTripleDesigner.cs" />
+    <Compile Include="Ribbon\KryptonRibbonQATButtonCollectionEditor.cs" />
+    <Compile Include="Ribbon\KryptonRibbonRecentDocCollectionEditor.cs" />
+    <Compile Include="Ribbon\KryptonRibbonTabDesigner.cs" />
     <Compile Include="View Base\ViewRibbonQATOverflowManager.cs" />
     <Compile Include="View Base\ViewRibbonPopupGroupManager.cs" />
     <Compile Include="View Base\ViewRibbonManager.cs" />
@@ -420,7 +453,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release "$(ProjectDir)..\GacUtil.exe" -i "$(TargetPath)" /f</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(ProjectDir)..\..\..\Bin\" /D /R /Y /S</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

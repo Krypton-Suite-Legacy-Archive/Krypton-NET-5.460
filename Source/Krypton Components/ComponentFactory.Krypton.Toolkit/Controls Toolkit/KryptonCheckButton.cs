@@ -6,7 +6,7 @@
 //  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
 // 
 //  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 5.460.0.0  www.ComponentFactory.com
+//  Version 4.7.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -23,7 +23,7 @@ namespace ComponentFactory.Krypton.Toolkit
     [ToolboxBitmap(typeof(KryptonCheckButton), "ToolboxBitmaps.KryptonCheckButton.bmp")]
     [DefaultEvent("Click")]
 	[DefaultProperty("Text")]
-    [Designer("ComponentFactory.Krypton.Toolkit.KryptonCheckButtonDesigner, ComponentFactory.Krypton.Design, Version=5.460.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e")]
+    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonCheckButtonDesigner))]
     [DesignerCategory("code")]
     [Description("Toggles checked state when user clicks button.")]
     [ClassInterface(ClassInterfaceType.AutoDispatch)]

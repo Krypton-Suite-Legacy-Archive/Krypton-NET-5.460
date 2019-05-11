@@ -1,4 +1,4 @@
-# <img src="https://github.com/Wagnerp/Krypton-NET-5.460/blob/master/Assets/PNG/Square%20Design/Main%20Icon/64%20x%2064/Square%20Design%2064%20x%2064%20New%20Green.png">-NET-5.460
+# <img src="https://github.com/Wagnerp/Krypton-NET-5.460/blob/master/Assets/PNG/Square%20Design/Main%20Icon/64%20x%2064/Square%20Design%2064%20x%2064%20New%20Green.png"> .NET 5.460
 
 =======
 

@@ -1,21 +1,22 @@
 ﻿// *****************************************************************************
 // BSD 3-Clause License (https://github.com/ComponentFactory/Krypton/blob/master/LICENSE)
-//  © Component Factory Pty Ltd, 2006-2018, All rights reserved.
+//  © Component Factory Pty Ltd, 2006-2019, All rights reserved.
 // The software and associated documentation supplied hereunder are the 
 //  proprietary information of Component Factory Pty Ltd, 13 Swallows Close, 
-//  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
+//  Mornington, Vic 3931, Australia and are supplied subject to license terms.
 // 
-//  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 4.7.0.0  www.ComponentFactory.com
+//  Modifications by MegaKraken, Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2019. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
+//  Version 5.460.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
-using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+
+using Microsoft.Win32;
 
 namespace ComponentFactory.Krypton.Toolkit
 {
@@ -28,7 +29,7 @@ namespace ComponentFactory.Krypton.Toolkit
     [DefaultProperty("Text")]
     [DefaultBindingProperty("Text")]
     [LookupBindingProperties("DataSource", "DisplayMember", "ValueMember", "SelectedValue")]
-    [Designer(typeof(ComponentFactory.Krypton.Toolkit.KryptonComboBoxDesigner))]
+    [Designer(typeof(KryptonComboBoxDesigner))]
     [DesignerCategory("code")]
     [Description("Displays an editable textbox with a drop-down list of permitted values.")]
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
@@ -86,10 +87,10 @@ namespace ComponentFactory.Krypton.Toolkit
             {
                 switch (m.Msg)
                 {
-                    case PI.WM_NCHITTEST:
+                    case PI.WM_.NCHITTEST:
                         if (_kryptonComboBox.InTransparentDesignMode)
                         {
-                            m.Result = (IntPtr)PI.HTTRANSPARENT;
+                            m.Result = (IntPtr)PI.HT.TRANSPARENT;
                         }
                         else
                         {
@@ -266,10 +267,10 @@ namespace ComponentFactory.Krypton.Toolkit
             {
                 switch (m.Msg)
                 {
-                    case PI.WM_NCHITTEST:
+                    case PI.WM_.NCHITTEST:
                         if (_kryptonComboBox.InTransparentDesignMode)
                         {
-                            m.Result = (IntPtr)PI.HTTRANSPARENT;
+                            m.Result = (IntPtr)PI.HT.TRANSPARENT;
                         }
                         else
                         {
@@ -277,7 +278,7 @@ namespace ComponentFactory.Krypton.Toolkit
                         }
 
                         break;
-                    case PI.WM_MOUSELEAVE:
+                    case PI.WM_.MOUSELEAVE:
                         {
                             // Mouse is not over the control
                             MouseOver = false;
@@ -286,7 +287,7 @@ namespace ComponentFactory.Krypton.Toolkit
                             Invalidate();
                         }
                         break;
-                    case PI.WM_MOUSEMOVE:
+                    case PI.WM_.MOUSEMOVE:
                         {
                             // Mouse is over the control
                             if (!MouseOver)
@@ -323,8 +324,8 @@ namespace ComponentFactory.Krypton.Toolkit
                             }
                         }
                         break;
-                    case PI.WM_PRINTCLIENT:
-                    case PI.WM_PAINT:
+                    case PI.WM_.PRINTCLIENT:
+                    case PI.WM_.PAINT:
                         {
                             PI.PAINTSTRUCT ps = new PI.PAINTSTRUCT();
 
@@ -354,7 +355,7 @@ namespace ComponentFactory.Krypton.Toolkit
                                 // Create rectangle that represents the drop down button
                                 Rectangle dropRect;
 
-                                // Update text and drop down rects dependant on the right to left setting
+                                // Update text and drop down rects dependent on the right to left setting
                                 if (_kryptonComboBox.RightToLeft == RightToLeft.Yes)
                                 {
                                     dropRect = new Rectangle(rect.left + borderSize.Width + 1, rect.top + 1, dropDownWidth - 2, (rect.bottom - rect.top - 2));
@@ -443,7 +444,7 @@ namespace ComponentFactory.Krypton.Toolkit
                             }
                         }
                         break;
-                    case PI.WM_CONTEXTMENU:
+                    case PI.WM_.CONTEXTMENU:
                         // Only interested in overriding the behavior when we have a krypton context menu...
                         if (_kryptonComboBox.KryptonContextMenu != null)
                         {
@@ -665,8 +666,9 @@ namespace ComponentFactory.Krypton.Toolkit
                 set => PI.SetWindowPos(Handle,
                     IntPtr.Zero,
                     0, 0, 0, 0,
-                    (uint)(PI.SWP_NOMOVE | PI.SWP_NOSIZE |
-                           (value ? PI.SWP_SHOWWINDOW : PI.SWP_HIDEWINDOW)));
+                    (PI.SWP_.NOMOVE | PI.SWP_.NOSIZE |
+                           (value ? PI.SWP_.SHOWWINDOW : PI.SWP_.HIDEWINDOW))
+                    );
             }
             #endregion
 
@@ -679,10 +681,10 @@ namespace ComponentFactory.Krypton.Toolkit
             {
                 switch (m.Msg)
                 {
-                    case PI.WM_NCHITTEST:
+                    case PI.WM_.NCHITTEST:
                         if (_kryptonComboBox.InTransparentDesignMode)
                         {
-                            m.Result = (IntPtr)PI.HTTRANSPARENT;
+                            m.Result = (IntPtr)PI.HT.TRANSPARENT;
                         }
                         else
                         {
@@ -690,13 +692,13 @@ namespace ComponentFactory.Krypton.Toolkit
                         }
 
                         break;
-                    case PI.WM_MOUSELEAVE:
+                    case PI.WM_.MOUSELEAVE:
                         // Mouse is not over the control
                         MouseOver = false;
                         _kryptonComboBox.PerformNeedPaint(false);
                         base.WndProc(ref m);
                         break;
-                    case PI.WM_MOUSEMOVE:
+                    case PI.WM_.MOUSEMOVE:
                         // Mouse is over the control
                         if (!MouseOver)
                         {
@@ -722,7 +724,7 @@ namespace ComponentFactory.Krypton.Toolkit
                         }
                         base.WndProc(ref m);
                         break;
-                    case PI.WM_CONTEXTMENU:
+                    case PI.WM_.CONTEXTMENU:
                         // Only interested in overriding the behavior when we have a krypton context menu...
                         if (_kryptonComboBox.KryptonContextMenu != null)
                         {
@@ -745,7 +747,7 @@ namespace ComponentFactory.Krypton.Toolkit
                         }
                         base.WndProc(ref m);
                         break;
-                    case PI.WM_DESTROY:
+                    case PI.WM_.DESTROY:
                         // Remove this code as it prevents the auto suggest features from working
                         // _kryptonComboBox.DetachEditControl();
                         base.WndProc(ref m);
@@ -820,12 +822,15 @@ namespace ComponentFactory.Krypton.Toolkit
         private readonly ViewDrawPanel _drawPanel;
         private Padding _layoutPadding;
         private IntPtr _screenDC;
+        private ButtonSpecAny _toolTipSpec;
+        private VisualPopupToolTip _toolTip;
         private bool _firstTimePaint;
         private bool _trackingMouseEnter;
         private bool _forcedLayout;
         private bool _mouseOver;
         private bool _alwaysActive;
         private int _cachedHeight;
+        private int _hoverIndex;
         #endregion
 
         #region Events
@@ -935,6 +940,20 @@ namespace ComponentFactory.Krypton.Toolkit
         public event EventHandler TextUpdate;
 
         /// <summary>
+        /// Occurs when the hovered selection changed.
+        /// </summary>
+        [Description("Occurs when the hovered selection changed.")]
+        [Category("Behavior")]
+        public event EventHandler<HoveredSelectionChangedEventArgs> HoveredSelectionChanged;
+
+        /// <summary>
+        /// Occurs when the <see cref="KryptonComboBox"/> wants to display a tooltip.
+        /// </summary>
+        [Description("Occurs when the KryptonComboBox wants to display a tooltip.")]
+        [Category("Behavior")]
+        public event EventHandler<ToolTipNeededEventArgs> ToolTipNeeded;
+
+        /// <summary>
         /// Occurs when the mouse enters the control.
         /// </summary>
         [Description("Raises the TrackMouseEnter event in the wrapped control.")]
@@ -997,7 +1016,7 @@ namespace ComponentFactory.Krypton.Toolkit
         /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public new event DrawItemEventHandler DrawItem;
+        public event DrawItemEventHandler DrawItem;
         #endregion
 
         #region Identity
@@ -1009,7 +1028,7 @@ namespace ComponentFactory.Krypton.Toolkit
 
         /// <summary>
         /// Initialize a new instance of the KryptonComboBox class.
-		/// </summary>
+        /// </summary>
         public KryptonComboBox()
         {
             // Contains another control and needs marking as such for validation to work
@@ -1030,7 +1049,11 @@ namespace ComponentFactory.Krypton.Toolkit
             _dropBackStyle = PaletteBackStyle.ControlClient;
             _style = ButtonStyle.ListItem;
             _firstTimePaint = true;
-
+            _hoverIndex = -1;
+            _toolTipSpec = new ButtonSpecAny
+            {
+                ToolTipStyle = LabelStyle.SuperTip,
+            };
             // Create storage properties
             ButtonSpecs = new ComboBoxButtonSpecCollection(this);
 
@@ -1055,6 +1078,7 @@ namespace ComponentFactory.Krypton.Toolkit
             _comboBox.MeasureItem += OnComboBoxMeasureItem;
             _comboBox.TrackMouseEnter += OnComboBoxMouseChange;
             _comboBox.TrackMouseLeave += OnComboBoxMouseChange;
+            //AddTooltipControlsTo(_comboBox);
             _comboBox.DropDown += OnComboBoxDropDown;
             _comboBox.DropDownClosed += OnComboBoxDropDownClosed;
             _comboBox.DropDownStyleChanged += OnComboBoxDropDownStyleChanged;
@@ -1081,7 +1105,7 @@ namespace ComponentFactory.Krypton.Toolkit
             _comboHolder = new InternalPanel(this);
             _comboHolder.Controls.Add(_comboBox);
 
-            // Create the element that fills the remainder space and remembers fill rectange
+            // Create the element that fills the remainder space and remembers fill rectangle
             _layoutFill = new ViewLayoutFill(_comboHolder);
 
             // Create inner view for placing inside the drawing docker
@@ -1126,6 +1150,8 @@ namespace ComponentFactory.Krypton.Toolkit
             _comboBox.BackColor = triple.PaletteBack.GetBackColor1(PaletteState.Tracking);
             _comboBox.ForeColor = triple.PaletteContent.GetContentShortTextColor1(PaletteState.Tracking);
             _comboBox.Font = triple.PaletteContent.GetContentShortTextFont(PaletteState.Tracking);
+            AutoCompleteMode = AutoCompleteMode.None;
+            AutoCompleteSource = AutoCompleteSource.None;
         }
 
         /// <summary>
@@ -1507,7 +1533,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 {
                     if (value == ComboBoxStyle.Simple)
                     {
-                        throw new ArgumentOutOfRangeException("KryptonComboBox does not support the DropDownStyle.Simple style.");
+                        throw new ArgumentOutOfRangeException(nameof(_comboBox.DropDownStyle), @"KryptonComboBox does not support the DropDownStyle.Simple style.");
                     }
 
                     _comboBox.DropDownStyle = value;
@@ -1544,7 +1570,7 @@ namespace ComponentFactory.Krypton.Toolkit
         }
 
         /// <summary>
-        /// Gets and sets the height, in pixels, of items in an owner-draw KryptomComboBox.
+        /// Gets and sets the height, in pixels, of items in an owner-draw KryptonComboBox.
         /// </summary>
         [Category("Behavior")]
         [Description("Do not use this property, it is provided for backwards compatability only.")]
@@ -1552,7 +1578,7 @@ namespace ComponentFactory.Krypton.Toolkit
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int ItemHeight
         {
-            get { return _comboBox.ItemHeight; }
+            get => _comboBox.ItemHeight;
 
             set
             {
@@ -1996,9 +2022,13 @@ namespace ComponentFactory.Krypton.Toolkit
                 }
                 else
                 {
-                    return (DesignMode || AlwaysActive ||
-                            ContainsFocus || _mouseOver || _comboBox.MouseOver ||
-                           ((_subclassEdit != null) && (_subclassEdit.MouseOver)));
+                    return (DesignMode
+                            || AlwaysActive
+                            || ContainsFocus
+                            || _mouseOver
+                            || _comboBox.MouseOver
+                            || ((_subclassEdit != null) && _subclassEdit.MouseOver)
+                            );
                 }
             }
         }
@@ -2037,7 +2067,7 @@ namespace ComponentFactory.Krypton.Toolkit
             // Do we have a manager to ask for a preferred size?
             if (ViewManager != null)
             {
-                // Ask the view to peform a layout
+                // Ask the view to perform a layout
                 Size retSize = ViewManager.GetPreferredSize(Renderer, proposedSize);
 
                 // Apply the maximum sizing
@@ -2072,9 +2102,9 @@ namespace ComponentFactory.Krypton.Toolkit
         }
 
         /// <summary>
-		/// Gets the rectangle that represents the display area of the control.
-		/// </summary>
-		public override Rectangle DisplayRectangle
+        /// Gets the rectangle that represents the display area of the control.
+        /// </summary>
+        public override Rectangle DisplayRectangle
         {
             get
             {
@@ -2096,7 +2126,7 @@ namespace ComponentFactory.Krypton.Toolkit
         }
 
         /// <summary>
-        /// Internal desing mode method.
+        /// Internal designing mode method.
         /// </summary>
         /// <param name="pt">Mouse location.</param>
         public bool DesignerGetHitTest(Point pt)
@@ -2112,7 +2142,7 @@ namespace ComponentFactory.Krypton.Toolkit
         }
 
         /// <summary>
-        /// Internal desing mode method.
+        /// Internal designing mode method.
         /// </summary>
         /// <param name="pt">Mouse location.</param>
         public Component DesignerComponentFromPoint(Point pt)
@@ -2124,7 +2154,7 @@ namespace ComponentFactory.Krypton.Toolkit
         }
 
         /// <summary>
-        /// Internal desing mode method.
+        /// Internal designing mode method.
         /// </summary>
         public void DesignerMouseLeave()
         {
@@ -2147,6 +2177,7 @@ namespace ComponentFactory.Krypton.Toolkit
         #endregion
 
         #region Protected Virtual
+        // ReSharper disable VirtualMemberNeverOverridden.Global
         /// <summary>
         /// Raises the Initialized event.
         /// </summary>
@@ -2250,10 +2281,33 @@ namespace ComponentFactory.Krypton.Toolkit
         protected virtual void OnTrackMouseLeave(EventArgs e) => TrackMouseLeave?.Invoke(this, e);
 
         /// <summary>
+        /// Raises the HoveredSelectionChanged event.
+        /// </summary>
+        /// <param name="e">An EventArgs containing the event data.</param>
+        protected virtual void OnHoverSelectionChanged(HoveredSelectionChangedEventArgs e)
+        {
+            HoveredSelectionChanged?.Invoke(this, e);
+            // See if there is a tooltip to display for the new selection.
+            ToolTipNeededEventArgs args = new ToolTipNeededEventArgs(e.Index, e.Item);
+            OnToolTipNeeded(args);
+            if (!args.IsEmpty)
+            {
+                ShowToolTip(args, e.Bounds.Location);
+            }
+        }
+
+        /// <summary>
         /// Raises the <see cref="E:DrawItem" /> event.
         /// </summary>
         /// <param name="e">The <see cref="DrawItemEventArgs"/> instance containing the event data.</param>
         protected virtual void OnDrawItem(DrawItemEventArgs e) => DrawItem?.Invoke(this, e);
+
+        /// <summary>
+        /// Raises the ToolTipNeeded event.
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnToolTipNeeded(ToolTipNeededEventArgs e) => ToolTipNeeded?.Invoke(this, e);
+        // ReSharper restore VirtualMemberNeverOverridden.Global
         #endregion
 
         #region Protected Overrides
@@ -2287,10 +2341,10 @@ namespace ComponentFactory.Krypton.Toolkit
         }
 
         /// <summary>
-		/// Raises the EnabledChanged event.
-		/// </summary>
-		/// <param name="e">An EventArgs that contains the event data.</param>
-		protected override void OnEnabledChanged(EventArgs e)
+        /// Raises the EnabledChanged event.
+        /// </summary>
+        /// <param name="e">An EventArgs that contains the event data.</param>
+        protected override void OnEnabledChanged(EventArgs e)
         {
             // Ensure we have subclassed the contained edit control
             UpdateEditControl();
@@ -2458,7 +2512,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 // Update to match the new palette settings
                 Height = PreferredHeight;
 
-                // Let base class calulcate fill rectangle
+                // Let base class calculate fill rectangle
                 base.OnLayout(levent);
 
                 // Only use layout logic if control is fully initialized or if being forced
@@ -2581,10 +2635,10 @@ namespace ComponentFactory.Krypton.Toolkit
         {
             switch (m.Msg)
             {
-                case PI.WM_NCHITTEST:
+                case PI.WM_.NCHITTEST:
                     if (InTransparentDesignMode)
                     {
-                        m.Result = (IntPtr)PI.HTTRANSPARENT;
+                        m.Result = (IntPtr)PI.HT.TRANSPARENT;
                     }
                     else
                     {
@@ -2624,7 +2678,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 if (_subclassEdit == null)
                 {
                     // Find the first child
-                    IntPtr childPtr = PI.GetWindow(_comboBox.Handle, PI.GW_CHILD);
+                    IntPtr childPtr = PI.GetWindow(_comboBox.Handle, PI.GetWindowType.GW_CHILD);
 
                     // If we found a child then it is the edit class
                     if (childPtr != IntPtr.Zero)
@@ -2760,6 +2814,14 @@ namespace ComponentFactory.Krypton.Toolkit
                         if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                         {
                             buttonState = PaletteState.Tracking;
+                            if (_hoverIndex != e.Index)
+                            {
+                                _hoverIndex = e.Index;
+                                // Raise the Hover event
+                                HoveredSelectionChangedEventArgs ev =
+                                    new HoveredSelectionChangedEventArgs(e.Bounds, e.Index, Items[e.Index]);
+                                OnHoverSelectionChanged(ev);
+                            }
                         }
                     }
 
@@ -2859,7 +2921,7 @@ namespace ComponentFactory.Krypton.Toolkit
             // had null then the height would be very small for the item and also the drop down.
             if (string.IsNullOrEmpty(_contentValues.ShortText))
             {
-                _contentValues.ShortText = " ";
+                _contentValues.ShortText = @" ";
             }
         }
 
@@ -2877,10 +2939,12 @@ namespace ComponentFactory.Krypton.Toolkit
                 if (_trackingMouseEnter)
                 {
                     OnTrackMouseEnter(EventArgs.Empty);
+                    OnMouseEnter(e);
                 }
                 else
                 {
                     OnTrackMouseLeave(EventArgs.Empty);
+                    OnMouseLeave(e);
                 }
             }
 
@@ -2928,6 +2992,7 @@ namespace ComponentFactory.Krypton.Toolkit
         private void OnComboBoxDropDown(object sender, EventArgs e)
         {
             _comboBox.Dropped = true;
+            _hoverIndex = -1;
             Refresh();
             OnDropDown(e);
         }
@@ -3014,9 +3079,7 @@ namespace ComponentFactory.Krypton.Toolkit
                                                                      CommonHelper.ContentStyleFromLabelStyle(toolTipStyle));
 
                         _visualPopupToolTip.Disposed += OnVisualPopupToolTipDisposed;
-
-                        // Show relative to the provided screen rectangle
-                        _visualPopupToolTip.ShowCalculatingSize(RectangleToScreen(e.Target.ClientRectangle));
+                        _visualPopupToolTip.ShowRelativeTo(e.Target, e.ControlMousePosition);
                     }
                 }
             }
@@ -3033,6 +3096,34 @@ namespace ComponentFactory.Krypton.Toolkit
 
             // Not showing a popup page any more
             _visualPopupToolTip = null;
+        }
+
+        private VisualPopupToolTip GetToolTip()
+        {
+            if (_toolTip != null
+                && !_toolTip.IsDisposed
+                )
+            {
+                return _toolTip;
+            }
+
+            PaletteRedirect redirector = new PaletteRedirect(KryptonManager.CurrentGlobalPalette);
+            _toolTip = new VisualPopupToolTip(redirector,
+                new ButtonSpecToContent(redirector, _toolTipSpec), KryptonManager
+                    .CurrentGlobalPalette.GetRenderer());
+            return _toolTip;
+        }
+
+        private void ShowToolTip(ToolTipNeededEventArgs e, Point location)
+        {
+            _toolTipSpec.ToolTipTitle = e.Title;
+            _toolTipSpec.ToolTipBody = e.Body;
+            _toolTipSpec.ToolTipImage = e.Icon;
+            VisualPopupToolTip tip = GetToolTip();
+            // Needed to make Krypton update the tooltip data with the data of the spec.
+            tip.PerformNeedPaint(true);
+            Point point = new Point(location.X + DropDownWidth, location.Y);
+            tip.ShowCalculatingSize(PointToScreen(point));
         }
         #endregion
     }

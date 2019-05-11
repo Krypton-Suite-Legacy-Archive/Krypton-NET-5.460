@@ -86,7 +86,6 @@ namespace ApplicationMenu
             // 
             // kryptonRibbon1
             // 
-            this.kryptonRibbon1.AllowFormIntegrate = true;
             this.kryptonRibbon1.InDesignHelperMode = true;
             this.kryptonRibbon1.Name = "kryptonRibbon1";
             this.kryptonRibbon1.RibbonAppButton.AppButtonMenuItems.AddRange(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] {
@@ -317,10 +316,6 @@ namespace ApplicationMenu
             this.buttonSystem.TextLine1 = "System";
             this.buttonSystem.Click += new System.EventHandler(this.buttonSystem_Click);
             // 
-            // kryptonManager1
-            // 
-            this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
-            // 
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.kryptonGroup1);
@@ -384,7 +379,7 @@ namespace ApplicationMenu
             // 
             this.textBoxMinHeight.Location = new System.Drawing.Point(163, 98);
             this.textBoxMinHeight.Name = "textBoxMinHeight";
-            this.textBoxMinHeight.Size = new System.Drawing.Size(50, 23);
+            this.textBoxMinHeight.Size = new System.Drawing.Size(50, 20);
             this.textBoxMinHeight.TabIndex = 6;
             this.textBoxMinHeight.Text = "kryptonTextBox3";
             // 
@@ -392,7 +387,7 @@ namespace ApplicationMenu
             // 
             this.textBoxDocsTitle.Location = new System.Drawing.Point(163, 50);
             this.textBoxDocsTitle.Name = "textBoxDocsTitle";
-            this.textBoxDocsTitle.Size = new System.Drawing.Size(141, 23);
+            this.textBoxDocsTitle.Size = new System.Drawing.Size(141, 20);
             this.textBoxDocsTitle.TabIndex = 1;
             this.textBoxDocsTitle.Text = "kryptonTextBox1";
             // 
@@ -427,7 +422,7 @@ namespace ApplicationMenu
             // 
             this.textBoxMinWidth.Location = new System.Drawing.Point(163, 74);
             this.textBoxMinWidth.Name = "textBoxMinWidth";
-            this.textBoxMinWidth.Size = new System.Drawing.Size(50, 23);
+            this.textBoxMinWidth.Size = new System.Drawing.Size(50, 20);
             this.textBoxMinWidth.TabIndex = 3;
             this.textBoxMinWidth.Text = "kryptonTextBox2";
             // 
@@ -441,6 +436,7 @@ namespace ApplicationMenu
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.Text = "Application Menu";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonRibbon1)).EndInit();

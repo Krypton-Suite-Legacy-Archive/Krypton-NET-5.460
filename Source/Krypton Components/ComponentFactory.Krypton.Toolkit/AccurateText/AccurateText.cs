@@ -1,12 +1,12 @@
 ﻿// *****************************************************************************
 // BSD 3-Clause License (https://github.com/ComponentFactory/Krypton/blob/master/LICENSE)
-//  © Component Factory Pty Ltd, 2006-2018, All rights reserved.
+//  © Component Factory Pty Ltd, 2006-2019, All rights reserved.
 // The software and associated documentation supplied hereunder are the 
 //  proprietary information of Component Factory Pty Ltd, 13 Swallows Close, 
-//  Mornington, Vic 3931, Australia and are supplied subject to licence terms.
+//  Mornington, Vic 3931, Australia and are supplied subject to license terms.
 // 
-//  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2018. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
-//  Version 4.7.0.0  www.ComponentFactory.com
+//  Modifications by Peter Wagner(aka Wagnerp) & Simon Coghlan(aka Smurf-IV) 2017 - 2019. All rights reserved. (https://github.com/Wagnerp/Krypton-NET-5.460)
+//  Version 5.460.0.0  www.ComponentFactory.com
 // *****************************************************************************
 
 using System;
@@ -279,7 +279,7 @@ namespace ComponentFactory.Krypton.Toolkit
 
                     try
                     {
-                        if (composition && glowing)
+                        if (Application.RenderWithVisualStyles && composition && glowing)
                         {
                             //DrawCompositionGlowingText(g, memento.Text, memento.Font, rect, state,
                             //                           SystemColors.ActiveCaptionText, true);
@@ -298,7 +298,7 @@ namespace ComponentFactory.Krypton.Toolkit
                                     SystemColors.ActiveCaptionText, true);
                             }
                         }
-                        else if (composition)
+                        else if (Application.RenderWithVisualStyles && composition)
                         {
                             //Check if correct in all cases
                             SolidBrush tmpBrush = brush as SolidBrush;
@@ -378,16 +378,19 @@ namespace ComponentFactory.Krypton.Toolkit
             {
                 IntPtr mDC = PI.CreateCompatibleDC(gDC);
 
-                PI.BITMAPINFO bmi = new PI.BITMAPINFO();
-                bmi.biSize = Marshal.SizeOf(bmi);
-                bmi.biWidth = bounds.Width;
-                bmi.biHeight = -(bounds.Height + (GLOW_EXTRA_HEIGHT * 2));
-                bmi.biCompression = 0;
-                bmi.biBitCount = 32;
-                bmi.biPlanes = 1;
+                PI.BITMAPINFO bmi = new PI.BITMAPINFO
+                {
+                    biWidth = bounds.Width,
+                    biHeight = -(bounds.Height + (GLOW_EXTRA_HEIGHT * 2)),
+                    biCompression = 0,
+                    biBitCount = 32,
+                    biPlanes = 1
+                };
+                bmi.biSize = (uint) Marshal.SizeOf(bmi);
+
 
                 // Create a device independent bitmap and select into the memory DC
-                IntPtr hDIB = PI.CreateDIBSection(gDC, bmi, 0, 0, IntPtr.Zero, 0);
+                IntPtr hDIB = PI.CreateDIBSection(gDC, ref bmi, 0, out _, IntPtr.Zero, 0);
                 PI.SelectObject(mDC, hDIB);
 
                 if (copyBackground)
@@ -481,16 +484,18 @@ namespace ComponentFactory.Krypton.Toolkit
             {
                 IntPtr mDC = PI.CreateCompatibleDC(gDC);
 
-                PI.BITMAPINFO bmi = new PI.BITMAPINFO();
-                bmi.biSize = Marshal.SizeOf(bmi);
-                bmi.biWidth = bounds.Width;
-                bmi.biHeight = -(bounds.Height);
-                bmi.biCompression = 0;
-                bmi.biBitCount = 32;
-                bmi.biPlanes = 1;
+                PI.BITMAPINFO bmi = new PI.BITMAPINFO
+                {
+                    biWidth = bounds.Width,
+                    biHeight = -(bounds.Height),
+                    biCompression = 0,
+                    biBitCount = 32,
+                    biPlanes = 1
+                };
+                bmi.biSize = (uint)Marshal.SizeOf(bmi);
 
                 // Create a device independent bitmap and select into the memory DC
-                IntPtr hDIB = PI.CreateDIBSection(gDC, bmi, 0, 0, IntPtr.Zero, 0);
+                IntPtr hDIB = PI.CreateDIBSection(gDC, ref bmi, 0, out _, IntPtr.Zero, 0);
                 PI.SelectObject(mDC, hDIB);
 
                 if (copyBackground)

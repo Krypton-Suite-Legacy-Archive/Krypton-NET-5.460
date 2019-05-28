@@ -16,7 +16,9 @@
 
 =======
 
-## 2019-05-20 Build 1103 - Bugfixes
+# See [this](https://wagnerp.github.io/Krypton-NET-5.470/) for latest changes
+
+<!--## 2019-05-20 Build 1103 - Bugfixes
 * Fixed issue [#179](https://github.com/Wagnerp/Krypton-NET-5.470/issues/179), KryptonTreeView with CheckBox and Image does not leave a "Gap"
 * Fixed issue [#176](https://github.com/Wagnerp/Krypton-NET-5.470/issues/176), Can not hide checkboxes for nodes in KryptonTreeView
 * Fixed issue [#148](https://github.com/Wagnerp/Krypton-NET-5.470/issues/148), Remove license demos & installer
@@ -104,3 +106,4 @@
 * Retarget to .NET 4.6 framework
 * Version correction
 * Nuget package released! Build 547 (build date February 9th, 2018) obtainable from [here](https://www.nuget.org/packages/KryptonToolkitSuite46/)
+-->

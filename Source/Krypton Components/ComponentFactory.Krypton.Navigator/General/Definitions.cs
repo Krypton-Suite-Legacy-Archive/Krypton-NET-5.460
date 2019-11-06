@@ -113,7 +113,7 @@ namespace ComponentFactory.Krypton.Navigator
         AllowPageReorder = 0x0200,
 
         /// <summary>Specifies that the page is allowed to be dragged from the navigator.</summary>
-        AllowPageDrag = 0x0400,
+        AllowPageDrag = 0x0460,
 
         /// <summary>Specifies that all flags are set.</summary>
         All = 0xFFFF,

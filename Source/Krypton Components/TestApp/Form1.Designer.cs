@@ -34,6 +34,7 @@
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.knumWindowRounding = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.kryptonMaskedTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonMaskedTextBox();
             this.kryptonNumericUpDown1 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.kcbBracketType = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
@@ -84,11 +85,12 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(800, 450);
+            this.kryptonPanel1.Size = new System.Drawing.Size(800, 460);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.knumWindowRounding);
             this.kryptonPanel2.Controls.Add(this.kryptonMaskedTextBox1);
             this.kryptonPanel2.Controls.Add(this.kryptonNumericUpDown1);
             this.kryptonPanel2.Controls.Add(this.kcbBracketType);
@@ -111,8 +113,26 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(800, 450);
+            this.kryptonPanel2.Size = new System.Drawing.Size(800, 460);
             this.kryptonPanel2.TabIndex = 0;
+            // 
+            // knumWindowRounding
+            // 
+            this.knumWindowRounding.Location = new System.Drawing.Point(580, 297);
+            this.knumWindowRounding.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.knumWindowRounding.Name = "knumWindowRounding";
+            this.knumWindowRounding.Size = new System.Drawing.Size(120, 22);
+            this.knumWindowRounding.TabIndex = 27;
+            this.knumWindowRounding.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.knumWindowRounding.ValueChanged += new System.EventHandler(this.knumWindowRounding_ValueChanged);
             // 
             // kryptonMaskedTextBox1
             // 
@@ -216,7 +236,7 @@
             // 
             // kryptonNavigator1
             // 
-            this.kryptonNavigator1.Location = new System.Drawing.Point(600, 372);
+            this.kryptonNavigator1.Location = new System.Drawing.Point(580, 338);
             this.kryptonNavigator1.Name = "kryptonNavigator1";
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.kryptonPage1,
@@ -375,9 +395,8 @@
             this.BracketType = ComponentFactory.Krypton.Toolkit.BracketType.SQUAREBRACKET;
             this.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
             this.buttonSpecAny1});
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 460);
             this.Controls.Add(this.kryptonPanel1);
-            this.DisableCloseButton = true;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -386,6 +405,9 @@
             this.ShadowValues.EnableShadows = true;
             this.ShadowValues.ExtraWidth = ((sbyte)(-2));
             this.ShadowValues.Opacity = 40D;
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.Form1_HelpRequested);
@@ -434,6 +456,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox kcbBracketType;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown1;
         private ComponentFactory.Krypton.Toolkit.KryptonMaskedTextBox kryptonMaskedTextBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown knumWindowRounding;
     }
 }
 

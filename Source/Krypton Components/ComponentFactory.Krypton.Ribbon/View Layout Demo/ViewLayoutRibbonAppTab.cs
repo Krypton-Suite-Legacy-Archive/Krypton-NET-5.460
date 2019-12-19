@@ -114,8 +114,8 @@ namespace ComponentFactory.Krypton.Ribbon
                             // Product code must be ...
                             //    'S' = Krypton Suite
                             // And version number...
-                            //    '460'
-                            validated = (productInfo[1].Equals("460")) && (productInfo[0][0] == 'S');
+                            //    '400'
+                            validated = (productInfo[1].Equals("400")) && (productInfo[0][0] == 'S');
                         }
                     }
                 }

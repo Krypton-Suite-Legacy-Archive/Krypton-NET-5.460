@@ -121,6 +121,23 @@
   <ItemGroup>
     <Content Include="Krypton.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="KryptonToolkitSuite5460CoreModule">
+      <Version>5.460.1300</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5460DockingModule">
+      <Version>5.460.745</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5460NavigatorModule">
+      <Version>5.460.772</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5460RibbonModule">
+      <Version>5.460.826</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5460WorkspaceModule">
+      <Version>5.460.719</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(ProjectDir)..\..\..\Binaries\" /D /R /Y /S</PostBuildEvent>

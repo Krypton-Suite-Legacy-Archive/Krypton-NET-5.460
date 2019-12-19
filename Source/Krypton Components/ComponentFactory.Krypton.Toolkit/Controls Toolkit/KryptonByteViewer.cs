@@ -64,7 +64,7 @@ namespace ComponentFactory.Krypton.Toolkit
         private const int CELL_WIDTH = 25;
         private const int CHAR_WIDTH = 8;
         private const int ADDRESS_WIDTH = 69;
-        private const int HEX_WIDTH = 460;
+        private const int HEX_WIDTH = 400;
         private const int DUMP_WIDTH = 128;
         private const int HEX_DUMP_GAP = 5;
         private const int ADDRESS_START_X = 5;

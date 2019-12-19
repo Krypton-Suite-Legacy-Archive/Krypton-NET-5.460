@@ -302,7 +302,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 }
 
                 // Enforce a maximum width to the commands
-                maxButtonSize.Width = Math.Min(Math.Max(maxButtonSize.Width, 150), 460);
+                maxButtonSize.Width = Math.Min(Math.Max(maxButtonSize.Width, 150), 400);
 
                 // Position the radio buttons in a vertical stack and size owning panel
                 Point offset = new Point(BUTTON_GAP - 1, 2);
@@ -357,7 +357,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 }
 
                 // Enforce a maximum width to the commands
-                maxButtonSize.Width = Math.Min(Math.Max(maxButtonSize.Width, 150), 460);
+                maxButtonSize.Width = Math.Min(Math.Max(maxButtonSize.Width, 150), 400);
 
                 // Position the buttons in a vertical stack and size owning panel
                 Point offset = new Point(BUTTON_GAP - 1, 2);
@@ -587,12 +587,12 @@ namespace ComponentFactory.Krypton.Toolkit
             // Update size of the main instruction and content labels but applying a sensible maximum
             using (Graphics g = CreateGraphics())
             {
-                // Find size of the labels when it has a maximum length of 460
+                // Find size of the labels when it has a maximum length of 400
                 _messageText.UpdateFont();
                 _messageContent.UpdateFont();
                 _messageContentMultiline.Font = _messageContent.Font;
-                Size messageMainSize = g.MeasureString(_mainInstruction, _messageText.Font, 460).ToSize();
-                messageContentSize = g.MeasureString(_content, _messageContent.Font, 460).ToSize();
+                Size messageMainSize = g.MeasureString(_mainInstruction, _messageText.Font, 400).ToSize();
+                messageContentSize = g.MeasureString(_content, _messageContent.Font, 400).ToSize();
 
                 // Get the display size and make sure that the content size is not greater than 0.6 of display size
                 Rectangle dispSize = Screen.GetWorkingArea(Location);
@@ -812,7 +812,7 @@ namespace ComponentFactory.Krypton.Toolkit
             // Update size of the footer but applying a sensible maximum
             using (Graphics g = CreateGraphics())
             {
-                // Find size of the labels when it has a maximum length of 460
+                // Find size of the labels when it has a maximum length of 400
                 _footerLabel.UpdateFont();
                 Size footerTextSize = g.MeasureString(_footerText, _footerLabel.Font, 200).ToSize();
                 Size footerHyperlinkSize = g.MeasureString(_footerHyperlink, _footerLabel.Font, 200).ToSize();

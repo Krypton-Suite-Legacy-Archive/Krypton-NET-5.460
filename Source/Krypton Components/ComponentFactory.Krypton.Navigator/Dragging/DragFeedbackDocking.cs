@@ -158,7 +158,7 @@ namespace ComponentFactory.Krypton.Navigator
                             return _hintToTarget[DragTargetHint.EdgeTop];
                         case 0x0200:
                             return _hintToTarget[DragTargetHint.EdgeBottom];
-                        case 0x0460:
+                        case 0x0400:
                             return _hintToTarget[DragTargetHint.Transfer];
                         default:
                             // Mouse is not over any of the targets

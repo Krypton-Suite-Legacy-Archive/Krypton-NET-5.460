@@ -12,16 +12,20 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
+using System.Reflection;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-// ReSharper disable MemberCanBePrivate.Global
 
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable FieldCanBeMadeReadOnly.Global
 // ReSharper disable IdentifierTypo
 // ReSharper disable InconsistentNaming
 // ReSharper disable UnusedMember.Local
 // ReSharper disable ArrangeTypeMemberModifiers
 // ReSharper disable BuiltInTypeReferenceStyle
+// ReSharper disable ClassNeverInstantiated.Global
 #pragma warning disable 649
 
 
@@ -163,32 +167,32 @@ namespace ComponentFactory.Krypton.Toolkit
         //TVS_CHECKBOXES = 0x0100,
         //TVS_TRACKSELECT = 0x0200,
         //TVS_FULLROWSELECT = 0x1000,
-        //TVS_NONEVENHEIGHT = 0x4600,
+        //TVS_NONEVENHEIGHT = 0x4000,
         //TVS_INFOTIP = 0x0800,
         //TVS_NOTOOLTIPS = 0x0080,
 
-        //TVN_SELCHANGINGA = ((0 - 460) - 1),
-        //TVN_SELCHANGINGW = ((0 - 460) - 50),
-        //TVN_GETINFOTIPA = ((0 - 460) - 13),
-        //TVN_GETINFOTIPW = ((0 - 460) - 14),
-        //TVN_SELCHANGEDA = ((0 - 460) - 2),
-        //TVN_SELCHANGEDW = ((0 - 460) - 51),
-        //TVN_GETDISPINFOA = ((0 - 460) - 3),
-        //TVN_GETDISPINFOW = ((0 - 460) - 52),
-        //TVN_SETDISPINFOA = ((0 - 460) - 4),
-        //TVN_SETDISPINFOW = ((0 - 460) - 53),
-        //TVN_ITEMEXPANDINGA = ((0 - 460) - 5),
-        //TVN_ITEMEXPANDINGW = ((0 - 460) - 54),
-        //TVN_ITEMEXPANDEDA = ((0 - 460) - 6),
-        //TVN_ITEMEXPANDEDW = ((0 - 460) - 55),
-        //TVN_BEGINDRAGA = ((0 - 460) - 7),
-        //TVN_BEGINDRAGW = ((0 - 460) - 56),
-        //TVN_BEGINRDRAGA = ((0 - 460) - 8),
-        //TVN_BEGINRDRAGW = ((0 - 460) - 57),
-        //TVN_BEGINLABELEDITA = ((0 - 460) - 10),
-        //TVN_BEGINLABELEDITW = ((0 - 460) - 59),
-        //TVN_ENDLABELEDITA = ((0 - 460) - 11),
-        //TVN_ENDLABELEDITW = ((0 - 460) - 60),
+        //TVN_SELCHANGINGA = ((0 - 400) - 1),
+        //TVN_SELCHANGINGW = ((0 - 400) - 50),
+        //TVN_GETINFOTIPA = ((0 - 400) - 13),
+        //TVN_GETINFOTIPW = ((0 - 400) - 14),
+        //TVN_SELCHANGEDA = ((0 - 400) - 2),
+        //TVN_SELCHANGEDW = ((0 - 400) - 51),
+        //TVN_GETDISPINFOA = ((0 - 400) - 3),
+        //TVN_GETDISPINFOW = ((0 - 400) - 52),
+        //TVN_SETDISPINFOA = ((0 - 400) - 4),
+        //TVN_SETDISPINFOW = ((0 - 400) - 53),
+        //TVN_ITEMEXPANDINGA = ((0 - 400) - 5),
+        //TVN_ITEMEXPANDINGW = ((0 - 400) - 54),
+        //TVN_ITEMEXPANDEDA = ((0 - 400) - 6),
+        //TVN_ITEMEXPANDEDW = ((0 - 400) - 55),
+        //TVN_BEGINDRAGA = ((0 - 400) - 7),
+        //TVN_BEGINDRAGW = ((0 - 400) - 56),
+        //TVN_BEGINRDRAGA = ((0 - 400) - 8),
+        //TVN_BEGINRDRAGW = ((0 - 400) - 57),
+        //TVN_BEGINLABELEDITA = ((0 - 400) - 10),
+        //TVN_BEGINLABELEDITW = ((0 - 400) - 59),
+        //TVN_ENDLABELEDITA = ((0 - 400) - 11),
+        //TVN_ENDLABELEDITW = ((0 - 400) - 60),
         #endregion  TreeView
 
         [Flags]
@@ -237,7 +241,7 @@ namespace ComponentFactory.Krypton.Toolkit
             /// <summary>Same as the SWP_NOOWNERZORDER flag.</summary>
             NOREPOSITION = 0x0200,
             /// <summary>Prevents the window from receiving the WM_WINDOWPOSCHANGING message.</summary>
-            DONOTSENDCHANGINGEVENT = 0x0460,
+            DONOTSENDCHANGINGEVENT = 0x0400,
             NOCLIENTSIZE = 0x0800,
             NOCLIENTMOVE = 0x1000,
             /// <summary>Prevents generation of the WM_SYNCPAINT message.</summary>
@@ -245,7 +249,7 @@ namespace ComponentFactory.Krypton.Toolkit
             /// <summary>If the calling thread and the thread that owns the window are attached to different input queues,
             /// the system posts the request to the thread that owns the window. This prevents the calling thread from
             /// blocking its execution while other threads process the request.</summary>
-            ASYNCWINDOWPOS = 0x4600,
+            ASYNCWINDOWPOS = 0x4000,
             STATECHANGED = 0x8000
         }
 
@@ -931,7 +935,7 @@ namespace ComponentFactory.Krypton.Toolkit
         /// <summary>
         /// I needed some "Generic" magic to get from an enum to an int for switch and boolean operands
         /// </summary>
-        internal struct WM_ 
+        internal struct WM_
         {
             public const int
             // <summary>
@@ -956,7 +960,10 @@ namespace ComponentFactory.Krypton.Toolkit
             // </summary>
             SIZE = 0x0005,
             // <summary>
-            // The WM_ACTIVATE message is sent to both the window being activated and the window being deactivated. If the windows use the same input queue, the message is sent synchronously, first to the window procedure of the top-level window being deactivated, then to the window procedure of the top-level window being activated. If the windows use different input queues, the message is sent asynchronously, so the window is activated immediately.
+            // The WM_ACTIVATE message is sent to both the window being activated and the window being deactivated.
+            // If the windows use the same input queue, the message is sent synchronously, first to the window procedure of the top-level window being deactivated, 
+            // then to the window procedure of the top-level window being activated. If the windows use different input queues, the message is sent asynchronously,
+            // so the window is activated immediately.
             // </summary>
             ACTIVATE = 0x0006,
             // <summary>
@@ -1039,7 +1046,8 @@ namespace ComponentFactory.Krypton.Toolkit
             // </summary>
             DEVMODECHANGE = 0x001B,
             // <summary>
-            // The WM_ACTIVATEAPP message is sent when a window belonging to a different application than the active window is about to be activated. The message is sent to the application whose window is being activated and to the application whose window is being deactivated.
+            // The WM_ACTIVATEAPP message is sent when a window belonging to a different application than the active window is about to be activated.
+            // The message is sent to the application whose window is being activated and to the application whose window is being deactivated.
             // </summary>
             ACTIVATEAPP = 0x001C,
             // <summary>
@@ -1071,7 +1079,8 @@ namespace ComponentFactory.Krypton.Toolkit
             // </summary>
             QUEUESYNC = 0x0023,
             // <summary>
-            // The WM_GETMINMAXINFO message is sent to a window when the size or position of the window is about to change. An application can use this message to override the window's default maximized size and position, or its default minimum or maximum tracking size.
+            // The WM_GETMINMAXINFO message is sent to a window when the size or position of the window is about to change.
+            // An application can use this message to override the window's default maximized size and position, or its default minimum or maximum tracking size.
             // </summary>
             GETMINMAXINFO = 0x0024,
             // <summary>
@@ -1374,15 +1383,18 @@ namespace ComponentFactory.Krypton.Toolkit
             IME_COMPOSITION = 0x010F,
             IME_KEYLAST = 0x010F,
             // <summary>
-            // The WM_INITDIALOG message is sent to the dialog box procedure immediately before a dialog box is displayed. Dialog box procedures typically use this message to initialize controls and carry out any other initialization tasks that affect the appearance of the dialog box.
+            // The WM_INITDIALOG message is sent to the dialog box procedure immediately before a dialog box is displayed.
+            // Dialog box procedures typically use this message to initialize controls and carry out any other initialization tasks that affect the appearance of the dialog box.
             // </summary>
             INITDIALOG = 0x0110,
             // <summary>
-            // The WM_COMMAND message is sent when the user selects a command item from a menu, when a control sends a notification message to its parent window, or when an accelerator keystroke is translated.
+            // The WM_COMMAND message is sent when the user selects a command item from a menu, when a control sends a notification message to its parent window,
+            // or when an accelerator keystroke is translated.
             // </summary>
             COMMAND = 0x0111,
             // <summary>
-            // A window receives this message when the user chooses a command from the Window menu, clicks the maximize button, minimize button, restore button, close button, or moves the form. You can stop the form from moving by filtering this out.
+            // A window receives this message when the user chooses a command from the Window menu, clicks the maximize button, minimize button, restore button, 
+            // close button, or moves the form. You can stop the form from moving by filtering this out.
             // </summary>
             SYSCOMMAND = 0x0112,
             // <summary>
@@ -1439,10 +1451,12 @@ namespace ComponentFactory.Krypton.Toolkit
             MENUCOMMAND = 0x0126,
             // <summary>
             // An application sends the WM_CHANGEUISTATE message to indicate that the user interface (UI) state should be changed.
+            // https://devblogs.microsoft.com/oldnewthing/20130516-00/?p=4343
             // </summary>
             CHANGEUISTATE = 0x0127,
             // <summary>
             // An application sends the WM_UPDATEUISTATE message to change the user interface (UI) state for the specified window and all its child windows.
+            // https://devblogs.microsoft.com/oldnewthing/20130516-00/?p=4343
             // </summary>
             UPDATEUISTATE = 0x0128,
             // <summary>
@@ -1546,7 +1560,11 @@ namespace ComponentFactory.Krypton.Toolkit
             // </summary>
             MOUSELAST = 0x020E,
             // <summary>
-            // The WM_PARENTNOTIFY message is sent to the parent of a child window when the child window is created or destroyed, or when the user clicks a mouse button while the cursor is over the child window. When the child window is being created, the system sends WM_PARENTNOTIFY just before the CreateWindow or CreateWindowEx function that creates the window returns. When the child window is being destroyed, the system sends the message before any processing to destroy the window takes place.
+            // The WM_PARENTNOTIFY message is sent to the parent of a child window when the child window is created or destroyed,
+            // or when the user clicks a mouse button while the cursor is over the child window. When the child window is being created, 
+            // the system sends WM_PARENTNOTIFY just before the CreateWindow or CreateWindowEx function that creates the window returns. 
+            // When the child window is being destroyed, the system sends the message before any processing to destroy the window takes place.
+            // This message is now extended to include the WM_POINTERDOWN event. 
             // </summary>
             PARENTNOTIFY = 0x0210,
             // <summary>
@@ -1830,7 +1848,7 @@ namespace ComponentFactory.Krypton.Toolkit
             // <summary>
             // The WM_USER constant is used by applications to help define private messages for use by private window classes, usually of the form WM_USER+X, where X is an integer value.
             // </summary>
-            USER = 0x0460,
+            USER = 0x0400,
 
             // <summary>
             // An application sends the WM_CPL_LAUNCH message to Windows Control Panel to request that a Control Panel application be started.
@@ -1845,6 +1863,8 @@ namespace ComponentFactory.Krypton.Toolkit
             // </summary>
             SYSTIMER = 0x118,
 
+
+            // Following are the ShellProc messages via RegisterShellHookWindow 
             // <summary>
             // The accessibility state has changed.
             // </summary>
@@ -1908,7 +1928,7 @@ namespace ComponentFactory.Krypton.Toolkit
             SAVEBITS = 0x0800,
             BYTEALIGNCLIENT = 0x1000,
             BYTEALIGNWINDOW = 0x2000,
-            GLOBALCLASS = 0x4600,
+            GLOBALCLASS = 0x4000,
             IME = 0x00010000,
             DROPSHADOW = 0x00020000
         }
@@ -1979,7 +1999,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 CAPTION = 0xc00000,
 
                 // <summary>The window is a child window. A window with this style cannot have a menu bar. This style cannot be used with the WS_POPUP style.</summary>
-                CHILD = 0x46000000,
+                CHILD = 0x40000000,
 
                 // <summary>Excludes the area occupied by child windows when drawing occurs within the parent window. This style is used when creating the parent window.</summary>
                 CLIPCHILDREN = 0x2000000,
@@ -1988,13 +2008,13 @@ namespace ComponentFactory.Krypton.Toolkit
                 // Clips child windows relative to each other; that is, when a particular child window receives a WM_PAINT message, the WS_CLIPSIBLINGS style clips all other overlapping child windows out of the region of the child window to be updated.
                 // If WS_CLIPSIBLINGS is not specified and child windows overlap, it is possible, when drawing within the client area of a child window, to draw within the client area of a neighboring child window.
                 // </summary>
-                CLIPSIBLINGS = 0x4600000,
+                CLIPSIBLINGS = 0x4000000,
 
                 // <summary>The window is initially disabled. A disabled window cannot receive input from the user. To change this after a window has been created, use the EnableWindow function.</summary>
                 DISABLED = 0x8000000,
 
                 // <summary>The window has a border of a style typically used with dialog boxes. A window with this style cannot have a title bar.</summary>
-                DLGFRAME = 0x460000,
+                DLGFRAME = 0x400000,
 
                 // <summary>
                 // The window is the first control of a group of controls. The group consists of this first control and all controls defined after it, up to the next control with the WS_GROUP style.
@@ -2031,7 +2051,7 @@ namespace ComponentFactory.Krypton.Toolkit
                 POPUPWINDOW = POPUP | BORDER | SYSMENU,
 
                 // <summary>The window has a sizing border.</summary>
-                SIZEFRAME = 0x46000,
+                SIZEFRAME = 0x40000,
 
                 // <summary>The window has a window menu on its title bar. The WS_CAPTION style must also be specified.</summary>
                 SYSMENU = 0x80000,
@@ -2067,19 +2087,19 @@ namespace ComponentFactory.Krypton.Toolkit
                 TOOLWINDOW = 0x00000080,
                 WINDOWEDGE = 0x00000100,
                 CLIENTEDGE = 0x00000200,
-                CONTEXTHELP = 0x00000460,
+                CONTEXTHELP = 0x00000400,
                 RIGHT = 0x00001000,
                 LEFT = 0x00000000,
                 RTLREADING = 0x00002000,
                 LTRREADING = 0x00000000,
-                LEFTSCROLLBAR = 0x00004600,
+                LEFTSCROLLBAR = 0x00004000,
                 RIGHTSCROLLBAR = 0x00000000,
                 CONTROLPARENT = 0x00010000,
                 STATICEDGE = 0x00020000,
-                APPWINDOW = 0x00046000,
+                APPWINDOW = 0x00040000,
                 LAYERED = 0x00080000,
                 NOINHERITLAYOUT = 0x00100000, // Disable inheritance of mirroring by children
-                LAYOUTRTL = 0x00460000, // Right to left mirroring
+                LAYOUTRTL = 0x00400000, // Right to left mirroring
                 COMPOSITED = 0x02000000,
                 NOACTIVATE = 0x08000000,
                 OVERLAPPEDWINDOW = (WINDOWEDGE + CLIENTEDGE),
@@ -2197,7 +2217,7 @@ namespace ComponentFactory.Krypton.Toolkit
         internal const int EM_FORMATRANGE = 0x0439;
         internal const int RDW_INVALIDATE = 0x0001;
         internal const int RDW_UPDATENOW = 0x0100;
-        internal const int RDW_FRAME = 0x0460;
+        internal const int RDW_FRAME = 0x0400;
         internal const int DCX_WINDOW = 0x01;
         internal const int DCX_CACHE = 0x02;
         internal const int DCX_CLIPSIBLINGS = 0x10;
@@ -2289,8 +2309,8 @@ namespace ComponentFactory.Krypton.Toolkit
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal static IntPtr GetWindowLongPtr(IntPtr hwnd, GWL_ nIndex)
         {
-            IntPtr ret = (8 == IntPtr.Size) 
-                ? GetWindowLongPtr64(hwnd, nIndex) 
+            IntPtr ret = (8 == IntPtr.Size)
+                ? GetWindowLongPtr64(hwnd, nIndex)
                 : new IntPtr(GetWindowLongPtr32(hwnd, nIndex));
             if (IntPtr.Zero == ret)
             {
@@ -2299,15 +2319,23 @@ namespace ComponentFactory.Krypton.Toolkit
             return ret;
         }
 
-        [SuppressMessage("Microsoft.Interoperability", "CA1460:PInvokeEntryPointsShouldExist")]
+        [SuppressMessage("Microsoft.Interoperability", "CA1400:PInvokeEntryPointsShouldExist")]
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         [DllImport("user32.dll", EntryPoint = "GetWindowLong", SetLastError = true)]
         private static extern int GetWindowLongPtr32(IntPtr hWnd, GWL_ nIndex);
 
-        [SuppressMessage("Microsoft.Interoperability", "CA1460:PInvokeEntryPointsShouldExist")]
+        [SuppressMessage("Microsoft.Interoperability", "CA1400:PInvokeEntryPointsShouldExist")]
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr", SetLastError = true)]
         private static extern IntPtr GetWindowLongPtr64(IntPtr hWnd, GWL_ nIndex);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool IntersectRect([Out] out RECT lprcDst, [In] ref RECT lprcSrc1, [In] ref RECT lprcSrc2);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool IsWindowVisible(IntPtr hWnd);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         internal static extern uint SetWindowLong(IntPtr hwnd, GWL_ nIndex, uint nLong);
@@ -2316,17 +2344,17 @@ namespace ComponentFactory.Krypton.Toolkit
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal static IntPtr SetWindowLongPtr(IntPtr hwnd, GWL_ nIndex, IntPtr dwNewLong)
         {
-            return (8 == IntPtr.Size) 
-                ? SetWindowLongPtr64(hwnd, nIndex, dwNewLong) 
+            return (8 == IntPtr.Size)
+                ? SetWindowLongPtr64(hwnd, nIndex, dwNewLong)
                 : new IntPtr(SetWindowLongPtr32(hwnd, nIndex, dwNewLong.ToInt32()));
         }
 
-        [SuppressMessage("Microsoft.Interoperability", "CA1460:PInvokeEntryPointsShouldExist")]
+        [SuppressMessage("Microsoft.Interoperability", "CA1400:PInvokeEntryPointsShouldExist")]
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         [DllImport("user32.dll", EntryPoint = "SetWindowLong", SetLastError = true)]
         private static extern int SetWindowLongPtr32(IntPtr hWnd, GWL_ nIndex, int dwNewLong);
 
-        [SuppressMessage("Microsoft.Interoperability", "CA1460:PInvokeEntryPointsShouldExist")]
+        [SuppressMessage("Microsoft.Interoperability", "CA1400:PInvokeEntryPointsShouldExist")]
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr", SetLastError = true)]
         private static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, GWL_ nIndex, IntPtr dwNewLong);
@@ -2387,7 +2415,12 @@ namespace ComponentFactory.Krypton.Toolkit
         internal static extern bool EndDeferWindowPos(IntPtr hWinPosInfo);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        internal static extern int SetWindowPos(IntPtr hWnd, IntPtr hWndAfter, int X, int Y, int Width, int Height, SWP_ flags);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndAfter, int X, int Y, int Width, int Height, SWP_ flags);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool SetForegroundWindow(IntPtr hWnd);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         internal static extern bool RedrawWindow(IntPtr hWnd, IntPtr rectUpdate, IntPtr hRgnUpdate, uint uFlags);
@@ -2506,6 +2539,56 @@ namespace ComponentFactory.Krypton.Toolkit
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto)]
         internal static extern IntPtr GetParent(IntPtr hWnd);
 
+        [DllImport("user32.dll")]
+        internal static extern int FillRect(IntPtr hDC, [In] ref RECT lprc, IntPtr hbr);
+
+        [DllImport("user32.dll")]
+        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttribData data);
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct WindowCompositionAttribData
+        {
+            public WindowCompositionAttribute Attribute;
+            public IntPtr Data;
+            public int SizeOfData;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct AccentPolicy
+        {
+            public AccentState AccentState;
+            public AccentFlags AccentFlags;
+            public int GradientColor;
+            public int AnimationId;
+        }
+
+        [Flags]
+        internal enum AccentFlags
+        {
+            // ...
+            DrawLeftBorder = 0x20,
+            DrawTopBorder = 0x40,
+            DrawRightBorder = 0x80,
+            DrawBottomBorder = 0x100,
+            DrawAllBorders = (DrawLeftBorder | DrawTopBorder | DrawRightBorder | DrawBottomBorder)
+            // ...
+        }
+
+        internal enum WindowCompositionAttribute
+        {
+            // ...
+            WCA_ACCENT_POLICY = 19
+            // ...
+        }
+
+        internal enum AccentState
+        {
+            ACCENT_DISABLED = 0,
+            ACCENT_ENABLE_GRADIENT = 1,
+            ACCENT_ENABLE_TRANSPARENTGRADIENT = 2,
+            ACCENT_ENABLE_BLURBEHIND = 3,
+            ACCENT_INVALID_STATE = 4
+        }
         #endregion
 
         #region Static Gdi32
@@ -2614,10 +2697,117 @@ namespace ComponentFactory.Krypton.Toolkit
         [DllImport("gdi32.dll")]
         internal static extern bool Rectangle(IntPtr hdc, int nLeftRect, int nTopRect, int nRightRect, int nBottomRect);
 
-        [DllImport("user32.dll")]
-        internal static extern int FillRect(IntPtr hDC, [In] ref RECT lprc, IntPtr hbr);
-
         #endregion
+
+        #region dwmapi
+        // Applicable to Vista -> Win 8
+        // Warning API's appear deprecated on MSDN for Win 10
+
+        [DllImport("dwmapi.dll")]
+        internal static extern void DwmEnableBlurBehindWindow(IntPtr hwnd, ref DWM_BLURBEHIND blurBehind);
+
+        [Flags]
+        internal enum DWM_BB
+        {
+            Enable = 1,
+            BlurRegion = 2,
+            TransitionOnMaximized = 4
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct DWM_BLURBEHIND
+        {
+            public DWM_BB dwFlags;
+            public int fEnable;
+            public IntPtr hRgnBlur;
+            public int fTransitionOnMaximized;
+
+            public DWM_BLURBEHIND(bool enabled)
+            {
+                fEnable = enabled ? 1 : 0;
+                hRgnBlur = IntPtr.Zero;
+                fTransitionOnMaximized = 0;
+                dwFlags = DWM_BB.Enable;
+            }
+
+            public System.Drawing.Region Region => System.Drawing.Region.FromHrgn(hRgnBlur);
+
+            public bool TransitionOnMaximized
+            {
+                get => fTransitionOnMaximized > 0;
+                set
+                {
+                    fTransitionOnMaximized = value ? 1 : 0;
+                    dwFlags |= DWM_BB.TransitionOnMaximized;
+                }
+            }
+
+            public void SetRegion(System.Drawing.Graphics graphics, System.Drawing.Region region)
+            {
+                hRgnBlur = region.GetHrgn(graphics);
+                dwFlags |= DWM_BB.BlurRegion;
+            }
+        }
+        #endregion dwmapi
+
+
+        #region GDIPlus
+        // C# GDI Plus 1.1 provides access to the GDI+ 1.1 functions which are available from Vista onwards
+        // Warning: the entire API is deprecated and is listed under Legacy APIs in MSDN.
+
+        /// <summary>
+        /// Contains members that specify the nature of a Gaussian blur.
+        /// </summary>
+        /// <remarks>Cannot be pinned with GCHandle due to bool value.</remarks>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        internal struct BlurParams
+        {
+            /// <summary>
+            /// Real number that specifies the blur radius (the radius of the Gaussian convolution kernel) in
+            /// pixels. The radius must be in the range 0 through 255. As the radius increases, the resulting
+            /// bitmap becomes more blurry.
+            /// </summary>
+            public float Radius;
+
+            /// <summary>
+            /// Boolean value that specifies whether the bitmap expands by an amount equal to the blur radius.
+            /// If TRUE, the bitmap expands by an amount equal to the radius so that it can have soft edges.
+            /// If FALSE, the bitmap remains the same size and the soft edges are clipped.
+            /// </summary>
+            public bool ExpandEdges;
+        }
+
+        // Constant "FieldInfo" for getting the nativeImage from the Bitmap
+        private static readonly FieldInfo FIELD_INFO_NATIVE_IMAGE = typeof(Bitmap).GetField("nativeImage", BindingFlags.GetField | BindingFlags.Instance | BindingFlags.NonPublic);
+        /// <summary>
+        /// Get the nativeImage field from the bitmap
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns>IntPtr</returns>
+        internal static IntPtr GetNativeImage(Bitmap bitmap)
+        {
+            if (bitmap == null)
+            {
+                return IntPtr.Zero;
+            }
+            return (IntPtr)FIELD_INFO_NATIVE_IMAGE.GetValue(bitmap);
+        }
+
+        internal static Guid BlurEffectGuid = new Guid("{633C80A4-1843-482B-9EF2-BE2834C5FDD4}");
+
+        [DllImport("gdiplus.dll", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode)]
+        internal static extern int GdipCreateEffect(Guid guid, out IntPtr effect);
+
+        [DllImport("gdiplus.dll", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode)]
+        internal static extern int GdipSetEffectParameters(IntPtr effect, IntPtr parameters, uint size);
+
+        [DllImport("gdiplus.dll", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode)]
+        internal static extern int GdipBitmapApplyEffect(IntPtr bitmap, IntPtr effect, ref RECT rectOfInterest, bool useAuxData, IntPtr auxData, int auxDataSize);
+
+        [DllImport("gdiplus.dll", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode)]
+        internal static extern int GdipDeleteEffect(IntPtr effect);
+
+        #endregion GDIPlus
 
         #region Static DwmApi
         [DllImport("dwmapi.dll", CharSet = CharSet.Auto)]
@@ -2955,23 +3145,23 @@ namespace ComponentFactory.Krypton.Toolkit
             HOTTRACKED = 0x00000080,
             DEFAULT = 0x00000100,
             EXPANDED = 0x00000200,
-            COLLAPSED = 0x00000460,
+            COLLAPSED = 0x00000400,
             BUSY = 0x00000800,
             FLOATING = 0x00001000,  // Children "owned" not "contained" by parent
             MARQUEED = 0x00002000,
-            ANIMATED = 0x00004600,
+            ANIMATED = 0x00004000,
             INVISIBLE = 0x00008000,
             OFFSCREEN = 0x00010000,
             SIZEABLE = 0x00020000,
-            MOVEABLE = 0x00046000,
+            MOVEABLE = 0x00040000,
             SELFVOICING = 0x00080000,
             FOCUSABLE = 0x00100000,
             SELECTABLE = 0x00200000,
-            LINKED = 0x00460000,
+            LINKED = 0x00400000,
             TRAVERSED = 0x00800000,
             MULTISELECTABLE = 0x01000000,  // Supports multiple selection
             EXTSELECTABLE = 0x02000000,  // Supports extended selection
-            ALERT_LOW = 0x04600000,  // This information is of low priority
+            ALERT_LOW = 0x04000000,  // This information is of low priority
             ALERT_MEDIUM = 0x08000000,  // This information is of medium priority
             ALERT_HIGH = 0x10000000,  // This information is of high priority
             PROTECTED = 0x20000000,  // access to this is restricted
